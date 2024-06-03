@@ -2,7 +2,7 @@
   "name": "mon-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://data-players.github.io/Portail-AD-Front",
+  "homepage": "https://data-players.github.io/Portail-AD-Front-2",
   "dependencies": {
     "@meilisearch/instant-meilisearch": "^0.11.1",
     "@testing-library/jest-dom": "^5.17.0",
