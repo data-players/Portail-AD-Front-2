@@ -1,0 +1,205 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.hit-categories {
+  font-style: italic;
+}
+
+.ais-InfiniteHits-item {
+  width:100% !important;
+}
+
+.mainContainer {
+  padding : 20px;
+}
+
+.searchBox {
+  margin-bottom: 20px;
+}
+
+.ais-RefinementList-label {
+  display: flex;             /* Utilise Flexbox pour aligner les éléments horizontalement */
+  align-items: center;       /* Centre les éléments verticalement */
+  width: 100%;               /* Prend toute la largeur disponible */
+  white-space: nowrap;       /* Garde tout sur une seule ligne */
+}
+
+.ais-RefinementList-checkbox {
+  margin-right: 10px;        /* Ajoute un espace entre la case à cocher et le texte */
+}
+
+.ais-RefinementList-labelText {
+  flex-grow: 1;              /* Permet au texte de prendre l'espace disponible */
+  overflow: hidden;          /* Cache le débordement de contenu */
+  text-overflow: ellipsis;   /* Ajoute des points de suspension si le texte déborde */
+  width: 200px;             /* Largeur fixe pour le tronçage du texte */
+  white-space: nowrap;      /* Empêche le texte de passer à la ligne suivante */
+}
+
+.ais-RefinementList-count {
+  margin-left: 10px;         /* Ajoute un espace entre le texte et le nombre */
+}
+
+.filter-container {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.filter-header h3 {
+  margin: 0;
+}
+
+.chevron {
+  transition: transform 0.3s ease;
+}
+
+.chevron.down {
+  transform: rotate(0deg);
+}
+
+.chevron.up {
+  transform: rotate(180deg);
+}
+
+.filter-content {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  /* padding: 20px; */
+}
+
+.card {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  transition: transform 0.2s;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    grid-template-columns: 1fr; 
+  }
+  .card {
+    height: 80px; /* Adjust the height as needed for smaller screens */
+  }
+}
+
+
+
+.appContainer {
+  display: flex;
+  height : 100vh;
+}
+
+.sidebar {
+  width: 10%;
+  background-color: #88BDED;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mainContent {
+  width: 90%;
+  padding: 20px;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.sidebar-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.sidebar-middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* flex-grow: 1; */
+}
+
+.sidebar-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.sidebar a:hover {
+  color: black;
+}
+.sidebar a.active {
+  color: black;
+}
+
+.searchResult {
+  overflow-y: scroll;
+  height : 80vh;
+}
