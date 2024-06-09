@@ -37,11 +37,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Create build directory
-        run: mkdir -p ./frontend/build
-
-      - name: Create CNAME file
-        run: echo "app.portail-alimentation-durable.fr" > ./frontend/build/CNAME
           
       - name: Install dependencies
         run: npm install
@@ -51,6 +46,8 @@ jobs:
         run: npm run build
         working-directory: ./frontend
 
+      - name: Create CNAME file
+        run: echo "app.portail-alimentation-durable.fr" > ./frontend/build/CNAME
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
