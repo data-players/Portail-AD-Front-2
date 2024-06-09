@@ -15,6 +15,8 @@ import CollapsibleFilter from './CollapsibleFilter';
 import Hit from './Hit';
 import "instantsearch.css/themes/algolia-min.css";
 import Joyride from 'react-joyride';
+import './SearchComponents.css';
+
 
 
 
@@ -195,3 +197,4 @@ const SearchComponents = () => {
 };
 
 export default SearchComponents;
+

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as PortalSvgIcon } from '../assets/icone.svg';
-// import './Sidebar.css';
+import './SideBar.css';
 
 const routes = [
   { path: '/home', label: 'Accueil', section: 'middle' },

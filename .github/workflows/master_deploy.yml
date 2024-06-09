@@ -36,6 +36,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20'
+
+      - name: Create CNAME file
+        run: echo "app.portail-alimentation-durable.fr" > ./frontend/build/CNAME
           
       - name: Install dependencies
         run: npm install
