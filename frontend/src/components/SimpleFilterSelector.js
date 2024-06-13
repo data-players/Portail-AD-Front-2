@@ -42,7 +42,7 @@ const DataDisplay = () => {
           </div>
           <div className="container">
             {roots.map(item => (
-              <Link key={item['pair:label']} to={`/search?refinementList[hasTopic][0]=${encodeURIComponent(item['pair:label'])}`} className="card" key={item.id}>
+              <Link to={`/search?refinementList[hasTopic][0]=${encodeURIComponent(item['pair:label'])}`} className="card" key={item.id}>
                 <div>{item['pair:label']}</div>
               </Link>
             ))}
@@ -65,7 +65,7 @@ const DataDisplay = () => {
           ) : (
             <div className="container">
               {orderedDataDepartment?.map(item => (
-                <Link key={item['pair:departmentNb']} to={`/search?refinementList[hasDepartment][0]=${encodeURIComponent(item['pair:label'])}`} className="card" key={item.id}>
+                <Link to={`/search?refinementList[hasDepartment][0]=${encodeURIComponent(item['pair:label'])}`} className="card" key={item.id}>
                   <div>{item['pair:label']} ({item['pair:departmentNb']})</div>
                 </Link>
               ))}
