@@ -14,40 +14,55 @@ body, html {
   background: linear-gradient(to bottom, #4CAF50, #81C784);
   color: white;
   text-align: center;
+  overflow: auto;
 }
 
 header {
   background: rgba(0, 0, 0, 0.5);
   padding: 2em;
-
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 4em;
 }
 
 .icons-container {
   display: flex;
   justify-content: center;
   gap: 4em;
-  margin-top: 4em;
+
 }
 
 .icons-container a {
   text-decoration: none;
   color: white;
   text-align: center;
-  transition: transform 0.3s;
-}
-
-.icons-container a:hover {
-  transform: scale(1.1);
 }
 
 .inverted-icon {
   filter: invert(1);
-  width: 150px; /* Ajustez la taille selon vos besoins */
-  height: 150px; /* Ajustez la taille selon vos besoins */
+  width: 100px; /* Ajustez la taille selon vos besoins */
+  height: 100px; /* Ajustez la taille selon vos besoins */
+}
+
+@media (max-width: 1280px) {
+  .inverted-icon {
+    width: 70px; /* Réduit la taille de 30% */
+    height: 70px; /* Réduit la taille de 30% */
+  }
 }
 
 .icons-container p {
   margin-top: 1em;
   font-size: 1.5em;
+}
+
+/* Applique le même poids de police que @SideBar.css et une couleur noire aux textes au survol */
+.homepage-container a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold; /* Même poids de police que @SideBar.css */
+  transition: color 0.3s;
+}
+
+.homepage-container a:hover {
+  color: black; /* Couleur noire au survol */
 }
