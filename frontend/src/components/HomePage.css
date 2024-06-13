@@ -1,5 +1,53 @@
-header {
-  background: #4CAF50;
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: linear-gradient(to bottom, #4CAF50, #81C784);
   color: white;
-  padding: 1em;
+  text-align: center;
+}
+
+header {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2em;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.icons-container {
+  display: flex;
+  justify-content: center;
+  gap: 4em;
+  margin-top: 4em;
+}
+
+.icons-container a {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.icons-container a:hover {
+  transform: scale(1.1);
+}
+
+.inverted-icon {
+  filter: invert(1);
+  width: 150px; /* Ajustez la taille selon vos besoins */
+  height: 150px; /* Ajustez la taille selon vos besoins */
+}
+
+.icons-container p {
+  margin-top: 1em;
+  font-size: 1.5em;
 }

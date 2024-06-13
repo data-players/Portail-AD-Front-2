@@ -44,8 +44,8 @@ const SearchComponents = () => {
         <>
           <h1>Barre de recherche</h1>
           <p>Vous pouvez taper un ou plusieurs mots-clés, les résultats de recherche sont mis à jour directement.</p>
-          <p>Pour chercher un terme ou expression stricte, ajoutez des guillemets autour. Ex: “projet alimentaire territorial</p>
-          <p>Si votre mot-clé comporte une faute d’orthographe ou s’approche d’un autre mot, l’outil le reconnaîtra et remontera les résultats qui s’approchent de votre intention de recherche</p>
+          <p>Pour chercher un terme ou expression stricte, ajoutez des guillemets autour. Ex: "projet alimentaire territorial</p>
+          <p>Si votre mot-clé comporte une faute d'orthographe ou s'approche d'un autre mot, l'outil le reconnaîtra et remontera les résultats qui s'approchent de votre intention de recherche</p>
         </>
       ),
      placement: 'bottom',
@@ -61,7 +61,7 @@ const SearchComponents = () => {
         <>
           <h1>Filtres</h1>
           <p>Vous pouvez sélectionner un ou plusieurs filtres, qui sont combinés pour actualiser la liste des résultats</p>
-          <p>Tous les contenus apparaissant dans les résultats de recherche proviennent de centres de ressources ou d’observatoires reconnus et qualifiés par nos soins, pour lesquels une convention de partenariat et de mise à disposition des données a été mise en place.</p>
+          <p>Tous les contenus apparaissant dans les résultats de recherche proviennent de centres de ressources ou d'observatoires reconnus et qualifiés par nos soins, pour lesquels une convention de partenariat et de mise à disposition des données a été mise en place.</p>
         </>
       ),
       placement: 'right',
@@ -131,8 +131,8 @@ const SearchComponents = () => {
         <SearchBox className="searchBox" />
         <Stats />
         <ClearRefinements />
-        <div style={{ display: 'flex' }}>
-          <div className="sideFilters" style={{ flexBasis: '30%', paddingRight: '20px' }}>
+        <div className="searchContainer">
+          <div className="sideFilters">
             <CollapsibleFilter title="Département" initialRouteState={initialRouteState} attribute="hasDepartment">
               <RefinementList attribute="hasDepartment" showMore={true} showMoreLimit={1000} />
             </CollapsibleFilter>
@@ -148,7 +148,6 @@ const SearchComponents = () => {
           </div>
           <div className="searchResult">
             <InfiniteHits
-              
               hitComponent={Hit}
               classNames={{
                 item: 'itemCustom'
@@ -197,4 +196,3 @@ const SearchComponents = () => {
 };
 
 export default SearchComponents;
-

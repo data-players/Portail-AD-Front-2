@@ -10,6 +10,15 @@ const DataDisplay = () => {
   const { dataTopic, dataDepartment, loading, error } = state;
   const [viewMode, setViewMode] = useState('map'); // 'map' or 'cards'
   const roots = dataTopic?.filter(t => t['pair:broader'] === undefined);
+  const orderedDataDepartment = dataDepartment.sort((a, b) => {
+    const numA = parseInt(a['pair:departmentNb'], 10);
+    const numB = parseInt(b['pair:departmentNb'], 10);
+    if (!isNaN(numA) && !isNaN(numB)) {
+      return numA - numB;
+    } else {
+      return a['pair:departmentNb'].localeCompare(b['pair:departmentNb']);
+    }
+  });
 
   useEffect(() => {
     fetchDataTopic(dispatch);
@@ -33,9 +42,9 @@ const DataDisplay = () => {
           </div>
           <div className="container">
             {roots.map(item => (
-              <div className="card" key={item.id}>
-                <Link to={`/search?refinementList[hasTopic][0]=${encodeURIComponent(item['pair:label'])}`}>{item['pair:label']}</Link>
-              </div>
+              <Link key={item['pair:label']} to={`/search?refinementList[hasTopic][0]=${encodeURIComponent(item['pair:label'])}`} className="card" key={item.id}>
+                <div>{item['pair:label']}</div>
+              </Link>
             ))}
           </div>
         </div>
@@ -55,10 +64,10 @@ const DataDisplay = () => {
             <Map />
           ) : (
             <div className="container">
-              {dataDepartment?.map(item => (
-                <div className="card" key={item.id}>
-                  <Link to={`/search?refinementList[hasDepartment][0]=${encodeURIComponent(item['pair:label'])}`}>{item['pair:label']}</Link>
-                </div>
+              {orderedDataDepartment?.map(item => (
+                <Link key={item['pair:departmentNb']} to={`/search?refinementList[hasDepartment][0]=${encodeURIComponent(item['pair:label'])}`} className="card" key={item.id}>
+                  <div>{item['pair:label']} ({item['pair:departmentNb']})</div>
+                </Link>
               ))}
             </div>
           )}

@@ -1,10 +1,11 @@
 .sidebar {
-  width: 10%;
+  /* width: 10%; */
   background-color: #88BDED;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 .sidebar-icon {
@@ -48,3 +49,4 @@
 .sidebar a.active svg {
   filter: invert(1);
 }
+

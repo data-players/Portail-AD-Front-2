@@ -72,7 +72,7 @@ const Map = () => {
                 onMouseMove={handleMouseMove}
                 style={{
                   default: { fill: "#D6D6DA", outline: "none" },
-                  hover: { fill: "#88BDED", outline: "none" },
+                  hover: { fill: "#B9FF66", outline: "none" },
                   pressed: { fill: "#E42", outline: "none" },
                 }}
               />

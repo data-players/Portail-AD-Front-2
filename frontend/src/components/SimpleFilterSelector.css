@@ -54,7 +54,7 @@
 
 
 .card {
-  background-color: #88BDED; /* Couleur de fond de la sidebar */
+  background-color: white; /* Couleur de fond de la sidebar */
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 20px;
@@ -65,26 +65,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white; /* Couleur de police de la sidebar */
+  color: black; /* Couleur de police de la sidebar */
   font-family: inherit; /* Applique la même police que la sidebar */
+  text-decoration: none; /* Enlève le soulignement */
 }
 
 .card:hover {
   transform: scale(1.3);
-  color: black; /* Couleur de police au survol de la sidebar */
 }
 
-.card a {
-  color: white; /* Couleur de police de la sidebar */
-  text-decoration: none; /* Enlève le soulignement */
-}
-
-.card a:hover {
-  color: black; /* Couleur de police au survol de la sidebar */
+.card:hover {
+  background-color: #B9FF66; /* Couleur de police au survol de la sidebar */
 }
 
 .card a:visited {
-  color: white; /* Garde la couleur de police même si déjà visité */
+  color: black; /* Garde la couleur de police même si déjà visité */
 }
 
 .switch-container {

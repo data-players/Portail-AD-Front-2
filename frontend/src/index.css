@@ -18,6 +18,6 @@ code {
 }
 
 .mainContent {
-  width:100%;
   padding: 10px;
+  flex-grow: 1;
 }

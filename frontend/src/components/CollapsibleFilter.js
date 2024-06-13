@@ -13,7 +13,7 @@ const CollapsibleFilter = ({ title, initialRouteState, attribute, children }) =>
   return (
     <div className="filter-container">
       <div className="filter-header" onClick={() => setIsOpen(!isOpen)}>
-        <h3>{title}</h3>
+        <span>{title}</span>
         <span className={`chevron ${isOpen ? 'up' : 'down'}`}>▼</span>
       </div>
       {isOpen && <div className="filter-content">{children}</div>}
