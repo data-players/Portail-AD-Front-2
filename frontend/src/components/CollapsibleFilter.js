@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import './CollapsibleFilter.css';
 
-const CollapsibleFilter = ({ title, initialRouteState, attribute, children }) => {
+const CollapsibleFilter = ({ title, initialRouteState, attribute, children, icon }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -13,10 +14,17 @@ const CollapsibleFilter = ({ title, initialRouteState, attribute, children }) =>
   return (
     <div className="filter-container">
       <div className="filter-header" onClick={() => setIsOpen(!isOpen)}>
-        <span>{title}</span>
+        <div>
+          {icon && <span className="filter-icon">{icon}</span>}
+          <span>{title}</span>
+        </div>
         <span className={`chevron ${isOpen ? 'up' : 'down'}`}>▼</span>
       </div>
-      {isOpen && <div className="filter-content">{children}</div>}
+      {isOpen && (
+        <div className="filter-content">
+          {children}
+        </div>
+      )}
     </div>
   );
 };
@@ -25,7 +33,8 @@ CollapsibleFilter.propTypes = {
   title: PropTypes.string.isRequired,
   initialRouteState: PropTypes.object.isRequired,
   attribute: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  icon: PropTypes.node
 };
 
 export default CollapsibleFilter;

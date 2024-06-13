@@ -16,6 +16,10 @@ import Hit from './Hit';
 import "instantsearch.css/themes/algolia-min.css";
 import Joyride from 'react-joyride';
 import './SearchComponents.css';
+import { ReactComponent as EarthIcon } from '../assets/logos/common/SVG/earth.svg';
+import { ReactComponent as ShieldStarIcon } from '../assets/logos/common/SVG/shield-star-line.svg';
+import { ReactComponent as MapPinIcon } from '../assets/logos/common/SVG/map-pin-range-line.svg';
+
 
 
 
@@ -129,24 +133,42 @@ const SearchComponents = () => {
       <InstantSearch indexName="documents" searchClient={searchClient} routing={routing}>
         <Configure attributesToSnippet={['description:150']} />
         <SearchBox className="searchBox" />
-        <Stats />
-        <ClearRefinements />
         <div className="searchContainer">
+
           <div className="sideFilters">
-            <CollapsibleFilter title="Département" initialRouteState={initialRouteState} attribute="hasDepartment">
-              <RefinementList attribute="hasDepartment" showMore={true} showMoreLimit={1000} />
+            <div>
+            <span>Filtres</span>
+              <ClearRefinements />
+            </div>
+            <CollapsibleFilter title="Département" initialRouteState={initialRouteState} attribute="hasDepartment" icon={<EarthIcon />}>  
+              <RefinementList attribute="hasDepartment" showMore={true} showMoreLimit={1000} translations={{
+                showMoreButtonText({ isShowingMore }) { 
+                  return isShowingMore ? 'Montrer moins de filtres' : 'montrer plus de filtres';
+                },
+                noResults: 'Aucun résultat'
+              }} />
             </CollapsibleFilter>
-            <CollapsibleFilter title="Thème" initialRouteState={initialRouteState} attribute="hasTopic">
-              <RefinementList attribute="hasTopic" showMore={true} showMoreLimit={1000} />
+            <hr style={{ margin: '10px 0', opacity: 0.5 }} />
+            <CollapsibleFilter title="Thème" initialRouteState={initialRouteState} attribute="hasTopic" icon={<ShieldStarIcon />}>
+              <RefinementList attribute="hasTopic" showMore={true} showMoreLimit={1000} translations={{
+                showMoreButtonText({ isShowingMore }) { 
+                  return isShowingMore ? 'Montrer moins de filtres' : 'montrer plus de filtres';
+                },
+                noResults: 'Aucun résultat'
+              }} />
             </CollapsibleFilter>
-            <CollapsibleFilter title="Mots clef" initialRouteState={initialRouteState} attribute="hasKeyword">
-              <RefinementList attribute="hasKeyword" showMore={true} showMoreLimit={1000} />
-            </CollapsibleFilter>
-            <CollapsibleFilter title="Sources" initialRouteState={initialRouteState} attribute="hasDataSource">
-              <RefinementList attribute="hasDataSource" />
+            <hr style={{ margin: '10px 0', opacity: 0.5 }} />
+            <CollapsibleFilter title="Mots clef" initialRouteState={initialRouteState} attribute="hasKeyword" icon={<MapPinIcon />}>
+              <RefinementList attribute="hasKeyword" showMore={true} showMoreLimit={1000} translations={{
+                showMoreButtonText({ isShowingMore }) { 
+                  return isShowingMore ? 'Montrer moins de filtres' : 'montrer plus de filtres';
+                },
+                noResults: 'Aucun résultat'
+              }} />
             </CollapsibleFilter>
           </div>
           <div className="searchResult">
+            <Stats />
             <InfiniteHits
               hitComponent={Hit}
               classNames={{
