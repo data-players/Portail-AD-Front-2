@@ -1,14 +1,19 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ReactComponent as PortalSvgIcon } from '../assets/icone.svg';
+import { ReactComponent as PortalSvgIcon } from '../assets/logos/common/SVG/logo blanc.svg';
+import { ReactComponent as HomeIcon } from '../assets/logos/common/SVG/home.svg';
+import { ReactComponent as ExploreIcon } from '../assets/logos/common/SVG/cas_dusage.svg';
+import { ReactComponent as SearchIcon } from '../assets/logos/common/SVG/rechercher_selected.svg';
+import { ReactComponent as ContributeIcon } from '../assets/logos/common/SVG/contribuer.svg';
+import { ReactComponent as AssistantIcon } from '../assets/logos/common/SVG/assistance.svg';
 import './SideBar.css';
 
 const routes = [
-  { path: '/home', label: 'Accueil', section: 'middle' },
-  { path: '/explore', label: 'Explorer', section: 'middle' },
-  { path: '/search', label: 'Rechercher', section: 'middle' },
-  { path: '/contribute', label: 'Contribuer', section: 'bottom' },
-  { path: '/assistant', label: 'Assistance', section: 'bottom' },
+  { path: '/home', label: 'Accueil', section: 'middle', icon: <HomeIcon /> },
+  { path: '/explore', label: 'Explorer', section: 'middle', icon: <ExploreIcon /> },
+  { path: '/search', label: 'Rechercher', section: 'middle', icon: <SearchIcon /> },
+  { path: '/contribute', label: 'Contribuer', section: 'bottom', icon: <ContributeIcon /> },
+  { path: '/assistant', label: 'Assistance', section: 'bottom', icon: <AssistantIcon /> },
 ];
 
 const Sidebar = () => {
@@ -24,7 +29,10 @@ const Sidebar = () => {
           to={route.path}
           className={currentPath === route.path ? 'active' : ''}
         >
-          {route.label}
+          <div className="link-content">
+            <div>{route.icon}</div>
+            <div>{route.label}</div>
+          </div>
         </Link>
       ));
   };

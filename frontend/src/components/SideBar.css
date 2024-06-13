@@ -44,3 +44,7 @@
 .sidebar a.active {
   color: black;
 }
+
+.sidebar a.active svg {
+  filter: invert(1);
+}
