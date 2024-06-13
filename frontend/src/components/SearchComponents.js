@@ -1,4 +1,4 @@
-import React, {useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   InstantSearch,
   InfiniteHits,
@@ -44,7 +44,7 @@ const SearchComponents = () => {
   const steps = [
     {
       target: '.ais-SearchBox-input',
-      content : (
+      content: (
         <>
           <h1>Barre de recherche</h1>
           <p>Vous pouvez taper un ou plusieurs mots-clés, les résultats de recherche sont mis à jour directement.</p>
@@ -52,7 +52,7 @@ const SearchComponents = () => {
           <p>Si votre mot-clé comporte une faute d'orthographe ou s'approche d'un autre mot, l'outil le reconnaîtra et remontera les résultats qui s'approchent de votre intention de recherche</p>
         </>
       ),
-     placement: 'bottom',
+      placement: 'bottom',
       styles: {
         options: {
           width: 300,
@@ -61,7 +61,7 @@ const SearchComponents = () => {
     },
     {
       target: '.filter-container',
-      content : (
+      content: (
         <>
           <h1>Filtres</h1>
           <p>Vous pouvez sélectionner un ou plusieurs filtres, qui sont combinés pour actualiser la liste des résultats</p>
@@ -117,7 +117,7 @@ const SearchComponents = () => {
 
       },
       routeToState(routeState) {
-        console.log('routeToState',routeState)
+        console.log('routeToState', routeState)
         setInitialRouteState(routeState);
         return {
           documents: routeState,
@@ -136,35 +136,48 @@ const SearchComponents = () => {
         <div className="searchContainer">
 
           <div className="sideFilters">
-            <div>
-            <span>Filtres</span>
-              <ClearRefinements />
+            <div className="filtersHeader">
+              <span>Filtres</span>
+              <ClearRefinements translations={{
+                resetButtonText: 'Réinitialiser les filtres',
+              }} classNames={{
+                button: 'clearRefinementsButton',
+              }} />
             </div>
-            <CollapsibleFilter title="Département" initialRouteState={initialRouteState} attribute="hasDepartment" icon={<EarthIcon />}>  
+            <CollapsibleFilter title="Département" initialRouteState={initialRouteState} attribute="hasDepartment" icon={<MapPinIcon />}>
               <RefinementList attribute="hasDepartment" showMore={true} showMoreLimit={1000} translations={{
-                showMoreButtonText({ isShowingMore }) { 
-                  return isShowingMore ? 'Montrer moins de filtres' : 'montrer plus de filtres';
+                showMoreButtonText({ isShowingMore }) {
+                  return isShowingMore ? 'Afficher moins' : 'Afficher plus';
                 },
                 noResults: 'Aucun résultat'
-              }} />
+              }}
+                classNames={{
+                  showMore: 'showMoreButton',
+                }} />
             </CollapsibleFilter>
             <hr style={{ margin: '10px 0', opacity: 0.5 }} />
-            <CollapsibleFilter title="Thème" initialRouteState={initialRouteState} attribute="hasTopic" icon={<ShieldStarIcon />}>
+            <CollapsibleFilter title="Thèmatique" initialRouteState={initialRouteState} attribute="hasTopic" icon={<EarthIcon />}>
               <RefinementList attribute="hasTopic" showMore={true} showMoreLimit={1000} translations={{
-                showMoreButtonText({ isShowingMore }) { 
-                  return isShowingMore ? 'Montrer moins de filtres' : 'montrer plus de filtres';
+                showMoreButtonText({ isShowingMore }) {
+                  return isShowingMore ? 'Afficher moins' : 'Afficher plus';
                 },
                 noResults: 'Aucun résultat'
-              }} />
+              }}
+                classNames={{
+                  showMore: 'showMoreButton',
+                }} />
             </CollapsibleFilter>
             <hr style={{ margin: '10px 0', opacity: 0.5 }} />
-            <CollapsibleFilter title="Mots clef" initialRouteState={initialRouteState} attribute="hasKeyword" icon={<MapPinIcon />}>
+            <CollapsibleFilter title="Tag" initialRouteState={initialRouteState} attribute="hasKeyword" icon={<ShieldStarIcon />}>
               <RefinementList attribute="hasKeyword" showMore={true} showMoreLimit={1000} translations={{
-                showMoreButtonText({ isShowingMore }) { 
-                  return isShowingMore ? 'Montrer moins de filtres' : 'montrer plus de filtres';
+                showMoreButtonText({ isShowingMore }) {
+                  return isShowingMore ? 'Afficher moins' : 'Afficher plus';
                 },
                 noResults: 'Aucun résultat'
-              }} />
+              }}
+                classNames={{
+                  showMore: 'showMoreButton',
+                }} />
             </CollapsibleFilter>
           </div>
           <div className="searchResult">
@@ -179,41 +192,41 @@ const SearchComponents = () => {
         </div>
       </InstantSearch>
       <Joyride
-      steps={steps}
-      run={run}
-      continuous={true}
-      scrollToFirstStep={true}
-      showProgress={true}
-      showSkipButton={true}
-      locale={{back: 'Retour', close: 'Fermer', last: 'Fin', next: 'Suivant', open: 'Ouvrire le guide', skip: 'Passer' }}
-      styles={{
-        options: {
-          zIndex: 10000,
-        },
-        tooltip: {
-          backgroundColor: 'black',
-          color: 'white',
-          border: '1px solid #ddd',
-          borderRadius: '8px',
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-        },
-        buttonNext: {
-          backgroundColor: '#28a745',
-          borderRadius: '4px',
-          color: 'white',
-        },
-        buttonBack: {
-          marginRight: 10,
-          color: '#28a745',
-        },
-        buttonSkip: {
-          backgroundColor: '#ddd',
-          borderRadius: '4px',
-          color: '#333',
-        },
-      }}
-    />
-  </>
+        steps={steps}
+        run={run}
+        continuous={true}
+        scrollToFirstStep={true}
+        showProgress={true}
+        showSkipButton={true}
+        locale={{ back: 'Retour', close: 'Fermer', last: 'Fin', next: 'Suivant', open: 'Ouvrire le guide', skip: 'Passer' }}
+        styles={{
+          options: {
+            zIndex: 10000,
+          },
+          tooltip: {
+            backgroundColor: 'black',
+            color: 'white',
+            border: '1px solid #ddd',
+            borderRadius: '8px',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+          },
+          buttonNext: {
+            backgroundColor: '#28a745',
+            borderRadius: '4px',
+            color: 'white',
+          },
+          buttonBack: {
+            marginRight: 10,
+            color: '#28a745',
+          },
+          buttonSkip: {
+            backgroundColor: '#ddd',
+            borderRadius: '4px',
+            color: '#333',
+          },
+        }}
+      />
+    </>
   );
 };
 
