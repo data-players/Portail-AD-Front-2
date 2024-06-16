@@ -132,7 +132,7 @@ const SearchComponents = () => {
     <>
       <InstantSearch indexName="documents" searchClient={searchClient} routing={routing}>
         <Configure attributesToSnippet={['description:150']} />
-        <SearchBox className="searchBox" />
+
         <div className="searchContainer">
 
           <div className="sideFilters">
@@ -181,6 +181,7 @@ const SearchComponents = () => {
             </CollapsibleFilter>
           </div>
           <div className="searchResult">
+            <SearchBox className="searchBox" />
             <Stats />
             <InfiniteHits
               hitComponent={Hit}

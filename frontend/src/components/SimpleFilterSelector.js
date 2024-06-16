@@ -3,6 +3,8 @@ import { useStore } from '../store/Store';
 import { fetchDataTopic, fetchDataDepartment } from '../actions/fetchData';
 import { Link } from 'react-router-dom';
 import Map from './Map';
+import { ReactComponent as EarthIcon } from '../assets/logos/common/SVG/earth.svg';
+import { ReactComponent as MapPinIcon } from '../assets/logos/common/SVG/map-pin-range-line.svg';
 import './SimpleFilterSelector.css';
 
 const DataDisplay = () => {
@@ -21,8 +23,8 @@ const DataDisplay = () => {
   });
 
   useEffect(() => {
-    fetchDataTopic(dispatch);
-    fetchDataDepartment(dispatch);
+    fetchDataTopic(dispatch, () => state);
+    fetchDataDepartment(dispatch, () => state);
   }, [dispatch]);
 
   if (loading) {
@@ -38,7 +40,10 @@ const DataDisplay = () => {
       <div className="content">
         <div className="themes-container">
           <div className="themes-header">
-            <h1>Themes</h1>
+            <div className="header-left">
+              <span><EarthIcon /></span>
+              <h1>Themes</h1>
+            </div>
           </div>
           <div className="container">
             {roots.map(item => (
@@ -50,7 +55,10 @@ const DataDisplay = () => {
         </div>
         <div className="departments-container">
           <div className="departments-header">
-            <h1>Départements</h1>
+            <div className="header-left">
+              <span><MapPinIcon /></span>
+              <h1>Départements</h1>
+            </div>
             <div className="switch-container">
               <span className="switch-label">Carte</span>
               <label className="switch">
@@ -75,6 +83,6 @@ const DataDisplay = () => {
       </div>
     </>
   );
-};
+}
 
 export default DataDisplay;

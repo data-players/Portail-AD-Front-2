@@ -1,24 +1,18 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: Arial, sans-serif;
-}
-
 .homepage-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
-  background: linear-gradient(to bottom, #4CAF50, #81C784);
-  color: white;
+  background: #FFFFFF;
+  color: #212529;
   text-align: center;
   overflow: auto;
 }
 
 header {
   background: rgba(0, 0, 0, 0.5);
+  color: white;
   padding: 2em;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-bottom: 4em;
@@ -28,12 +22,11 @@ header {
   display: flex;
   justify-content: center;
   gap: 4em;
-
 }
 
 .icons-container a {
   text-decoration: none;
-  color: white;
+  color: #212529;
   text-align: center;
 }
 
@@ -57,7 +50,7 @@ header {
 
 /* Applique le même poids de police que @SideBar.css et une couleur noire aux textes au survol */
 .homepage-container a {
-  color: white;
+  color: #212529;
   text-decoration: none;
   font-weight: bold; /* Même poids de police que @SideBar.css */
   transition: color 0.3s;

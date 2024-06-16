@@ -4,7 +4,10 @@ import React, { createContext, useReducer, useContext } from 'react';
 const initialState = {
   dataTopic: [],
   dataDepartment: [],
-  loading: true,
+  geoData: null,
+  loadingTopic: false,
+  loadingDepartment: false,
+  loadingGeoData: false,
   error: null
 };
 
@@ -12,11 +15,20 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_SUCCESS_Topic':
-      return { ...state, dataTopic: action.payload, loading: false };
+      return { ...state, dataTopic: action.payload, loadingTopic: false };
     case 'FETCH_SUCCESS_Department':
-      return { ...state, dataDepartment: action.payload, loading: false };
+      return { ...state, dataDepartment: action.payload, loadingDepartment: false };
+    case 'FETCH_SUCCESS_GeoData':
+      return { ...state, geoData: action.payload, loadingGeoData: false };
     case 'FETCH_ERROR':
-      return { ...state, loading: false, error: action.payload };
+      return { ...state, loadingTopic: false, loadingDepartment: false, loadingGeoData: false, error: action.payload };
+    case 'FETCH_START_Topic':
+      console.log('FETCH_START_Topic'); 
+      return { ...state, loadingTopic: true };
+    case 'FETCH_START_Department':
+      return { ...state, loadingDepartment: true };
+    case 'FETCH_START_GeoData':
+      return { ...state, loadingGeoData: true };
     default:
       return state;
   }
@@ -40,3 +52,4 @@ const StoreProvider = ({ children }) => {
 const useStore = () => useContext(StoreContext);
 
 export { StoreProvider, useStore };
+
