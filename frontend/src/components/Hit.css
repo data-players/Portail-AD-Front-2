@@ -1,0 +1,48 @@
+.hit-name {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+a.hit-link {
+    color: #88BDED;
+    text-decoration: none;
+}
+
+a.hit-link:hover {
+    color: #88BDED;
+}
+
+.hit-keyword,
+.hit-topic,
+.hit-data-source,
+.hit-department {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.keyword-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.keyword-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 6px 8px;
+    gap: 10px;
+    background: #F3F2F1;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.keyword-item mark {
+    background-color: #C5E4F8;
+}
+
+.ais-Highlight mark {
+    background-color: #C5E4F8;
+    color: inherit;
+}

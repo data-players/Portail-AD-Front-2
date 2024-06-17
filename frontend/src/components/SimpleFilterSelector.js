@@ -3,8 +3,8 @@ import { useStore } from '../store/Store';
 import { fetchDataTopic, fetchDataDepartment } from '../actions/fetchData';
 import { Link } from 'react-router-dom';
 import Map from './Map';
-import { ReactComponent as EarthIcon } from '../assets/logos/common/SVG/earth.svg';
-import { ReactComponent as MapPinIcon } from '../assets/logos/common/SVG/map-pin-range-line.svg';
+import { ReactComponent as ThematiqueIcon } from '../assets/logos/common/SVG/thématique.svg';
+import { ReactComponent as DepartementIcon } from '../assets/logos/common/SVG/departement.svg';
 import './SimpleFilterSelector.css';
 
 const DataDisplay = () => {
@@ -36,13 +36,16 @@ const DataDisplay = () => {
   }
 
   return (
-    <>
-      <div className="content">
+    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+      <div className="title">
+        <h1> Explorer par thématique ou département</h1>
+      </div>
+      <div className="content" style={{flexShrink:1}}>
         <div className="themes-container">
           <div className="themes-header">
             <div className="header-left">
-              <span><EarthIcon /></span>
-              <h1>Themes</h1>
+              <span><ThematiqueIcon /></span>
+              <h2>Themes</h2>
             </div>
           </div>
           <div className="container">
@@ -56,8 +59,8 @@ const DataDisplay = () => {
         <div className="departments-container">
           <div className="departments-header">
             <div className="header-left">
-              <span><MapPinIcon /></span>
-              <h1>Départements</h1>
+              <span><DepartementIcon /></span>
+              <h2>Départements</h2>
             </div>
             <div className="switch-container">
               <span className="switch-label">Carte</span>
@@ -81,7 +84,7 @@ const DataDisplay = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

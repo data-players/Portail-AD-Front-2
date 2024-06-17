@@ -16,14 +16,9 @@ import Hit from './Hit';
 import "instantsearch.css/themes/algolia-min.css";
 import Joyride from 'react-joyride';
 import './SearchComponents.css';
-import { ReactComponent as EarthIcon } from '../assets/logos/common/SVG/earth.svg';
-import { ReactComponent as ShieldStarIcon } from '../assets/logos/common/SVG/shield-star-line.svg';
-import { ReactComponent as MapPinIcon } from '../assets/logos/common/SVG/map-pin-range-line.svg';
-
-
-
-
-
+import { ReactComponent as ThematiqueIcon } from '../assets/logos/common/SVG/thématique.svg';
+import { ReactComponent as TagIcon } from '../assets/logos/common/SVG/tag.svg';
+import { ReactComponent as DepartementIcon } from '../assets/logos/common/SVG/departement.svg';
 
 const SearchComponents = () => {
 
@@ -35,8 +30,6 @@ const SearchComponents = () => {
     }, 1); // Délai de 500 ms pour s'assurer que les éléments sont montés
     return () => clearTimeout(timer);
   }, []);
-
-
 
   const [run, setRun] = useState(false);
   const [initialRouteState, setInitialRouteState] = useState({});
@@ -131,20 +124,18 @@ const SearchComponents = () => {
   return (
     <>
       <InstantSearch indexName="documents" searchClient={searchClient} routing={routing}>
-        <Configure attributesToSnippet={['description:150']} />
-
+        <Configure attributesToSnippet={['description:150', 'hasKeyword:4']} />
         <div className="searchContainer">
-
           <div className="sideFilters">
             <div className="filtersHeader">
-              <span>Filtres</span>
+              <h2>Rechercher</h2>
               <ClearRefinements translations={{
                 resetButtonText: 'Réinitialiser les filtres',
               }} classNames={{
                 button: 'clearRefinementsButton',
               }} />
             </div>
-            <CollapsibleFilter title="Département" initialRouteState={initialRouteState} attribute="hasDepartment" icon={<MapPinIcon />}>
+            <CollapsibleFilter title="Département" initialRouteState={initialRouteState} attribute="hasDepartment" icon={<DepartementIcon />}>
               <RefinementList attribute="hasDepartment" showMore={true} showMoreLimit={1000} translations={{
                 showMoreButtonText({ isShowingMore }) {
                   return isShowingMore ? 'Afficher moins' : 'Afficher plus';
@@ -156,7 +147,7 @@ const SearchComponents = () => {
                 }} />
             </CollapsibleFilter>
             <hr style={{ margin: '10px 0', opacity: 0.5 }} />
-            <CollapsibleFilter title="Thèmatique" initialRouteState={initialRouteState} attribute="hasTopic" icon={<EarthIcon />}>
+            <CollapsibleFilter title="Thèmatique" initialRouteState={initialRouteState} attribute="hasTopic" icon={<ThematiqueIcon />}>
               <RefinementList attribute="hasTopic" showMore={true} showMoreLimit={1000} translations={{
                 showMoreButtonText({ isShowingMore }) {
                   return isShowingMore ? 'Afficher moins' : 'Afficher plus';
@@ -168,7 +159,7 @@ const SearchComponents = () => {
                 }} />
             </CollapsibleFilter>
             <hr style={{ margin: '10px 0', opacity: 0.5 }} />
-            <CollapsibleFilter title="Tag" initialRouteState={initialRouteState} attribute="hasKeyword" icon={<ShieldStarIcon />}>
+            <CollapsibleFilter title="Tag" initialRouteState={initialRouteState} attribute="hasKeyword" icon={<TagIcon />}>
               <RefinementList attribute="hasKeyword" showMore={true} showMoreLimit={1000} translations={{
                 showMoreButtonText({ isShowingMore }) {
                   return isShowingMore ? 'Afficher moins' : 'Afficher plus';

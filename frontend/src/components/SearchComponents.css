@@ -20,6 +20,14 @@
     width: 200px;
     white-space: nowrap;
   }
+
+  .ais-InfiniteHits-item {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    border : none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
   
   .ais-RefinementList-count {
     margin-left: 10px;

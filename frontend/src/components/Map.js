@@ -38,7 +38,7 @@ const Map = () => {
         const newWidth = Math.min(calculatedWidth, parentWidth);
 
         // Vérifier si la différence dépasse 10%
-        if (Math.abs(newWidth - containerWidth) / containerWidth > 0.1) {
+        if (Math.abs(newWidth - containerWidth) / containerWidth > 0.01) {
           setContainerWidth(newWidth);
         }
       }
@@ -77,7 +77,7 @@ const Map = () => {
   };
 
   return (
-    <div ref={containerRef} style={{flexGrow:1, flexShrink:1, flexBasis:'600px'}}>
+    <div ref={containerRef} style={{flexGrow:1, flexShrink:1, flexBasis:'600px', display:'flex', flexDirection:'column', alignItems:'center'}}>
       <div ref={mapRef} style={{ width: `${containerWidth}px` }}>
         <ComposableMap
           width={205}

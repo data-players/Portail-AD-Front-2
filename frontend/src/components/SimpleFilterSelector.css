@@ -35,7 +35,7 @@
   align-items: center;
 }
 
-.header-left h1 {
+.header-left h2 {
   margin-left: 10px;
 }
 
@@ -67,12 +67,12 @@
   background-color: white; /* Couleur de fond de la sidebar */
   border: 1px solid #ddd;
   border-radius: 5px;
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
   text-align: center;
   transition: transform 0.2s;
-  height: 80px;
   display: flex;
+  height: 60px;
   align-items: center;
   justify-content: center;
   color: black; /* Couleur de police de la sidebar */
@@ -145,4 +145,8 @@ input:checked + .slider:before {
 
 .switch-label {
   font-size: 14px;
+}
+
+.title h1 {
+  text-align: center;
 }
