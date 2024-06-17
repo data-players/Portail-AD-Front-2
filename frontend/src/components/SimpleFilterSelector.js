@@ -25,7 +25,7 @@ const DataDisplay = () => {
   useEffect(() => {
     fetchDataTopic(dispatch, () => state);
     fetchDataDepartment(dispatch, () => state);
-  }, [dispatch]);
+  }, [dispatch, state]);
 
   if (loading) {
     return <div>Loading...</div>;

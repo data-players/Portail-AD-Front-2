@@ -19,7 +19,7 @@ const Map = () => {
     if (!geoData && !loadingGeoData) {
       fetchGeoData(dispatch, () => state);
     }
-  }, [geoData, loadingGeoData, dispatch]);
+  }, [geoData, loadingGeoData, dispatch, state]);
 
   useEffect(() => {
     const handleResize = () => {
