@@ -2,11 +2,14 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  height: 100%;
 }
 
 .themes-container, .departments-container {
   flex: 1 1;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 .departments-container {
@@ -76,10 +79,12 @@
   font-family: inherit; /* Applique la même police que la sidebar */
   text-decoration: none; /* Enlève le soulignement */
   box-shadow: 0px 1.6px 8px 0px #00000014, 0px 0.3px 0.9px 0px #0000001A; /* Ajouté pour correspondre aux spécifications Figma */
+  border-radius: 9px;
 }
 
 .card:hover {
   background-color: #B9FF66; /* Couleur de police au survol de la sidebar */
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 0.6px 1.8px rgba(0, 0, 0, 0.1), 0px 3.2px 7.2px rgba(0, 0, 0, 0.13);
 }
 
 .card a:visited {
