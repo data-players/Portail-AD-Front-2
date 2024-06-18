@@ -80,12 +80,16 @@ const SearchComponents = () => {
       createURL({ qsModule, routeState, location }) {
         const { protocol, hostname, port = '', pathname, hash } = location;
         const portWithPrefix = port === '' ? '' : `:${port}`;
+        /* eslint-disable no-unused-vars */
         const [hashPath, hashQuery = ''] = hash.slice(1).split('?');
+        /* eslint-enable no-unused-vars */
         const queryParameters = qsModule.stringify(routeState);
         return `${protocol}//${hostname}${portWithPrefix}${pathname}#${hashPath}?${queryParameters}`;
       },
       parseURL({ qsModule, location }) {
+        /* eslint-disable no-unused-vars */
         const [hashPath, hashQuery = ''] = location.hash.slice(1).split('?');
+        /* eslint-enable no-unused-vars */
         const routeState = qsModule.parse(hashQuery);
         return routeState;
       },
