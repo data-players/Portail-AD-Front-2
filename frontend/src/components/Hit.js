@@ -7,6 +7,12 @@ import { ReactComponent as TagIcon } from '../assets/logos/common/SVG/tag.svg';
 import { ReactComponent as RessourceIcon } from '../assets/logos/common/SVG/ressource.svg';
 
 const Hit = ({ hit }) => {
+  console.log(hit);
+  if (hit.hasKeyword && !Array.isArray(hit.hasKeyword)) {
+    hit.hasKeyword = [hit.hasKeyword];
+    hit._highlightResult.hasKeyword = [hit._highlightResult.hasKeyword];
+    hit._snippetResult.hasKeyword = [hit._snippetResult.hasKeyword];
+  }
   return (
     <>
       <article key={hit.id} className="hit-item">
@@ -55,7 +61,7 @@ const Hit = ({ hit }) => {
           )}
         </div>
 
-        {hit.hasKeyword && hit._highlightResult && hit._highlightResult.hasKeyword && hit._highlightResult.hasKeyword.length > 0 && (
+        {hit?._highlightResult?.hasKeyword &&  (
           <div className="hit-details">
             <div className="hit-keyword">
               <div className="hit-keyword-icon">
