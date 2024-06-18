@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as PortalSvgIcon } from '../assets/logos/common/SVG/logo blanc.svg';
 import { ReactComponent as HomeIcon } from '../assets/logos/common/SVG/home.svg';
-import { ReactComponent as ExploreIcon } from '../assets/logos/common/SVG/cas_dusage.svg';
-import { ReactComponent as SearchIcon } from '../assets/logos/common/SVG/rechercher_selected.svg';
+import { ReactComponent as ExploreIcon } from '../assets/logos/common/SVG/explorer.svg';
+import { ReactComponent as SearchIcon } from '../assets/logos/common/SVG/rechercher.svg';
 import './SideBar.css';
 
 const routes = [

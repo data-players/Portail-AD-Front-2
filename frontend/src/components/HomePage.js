@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as ContributeIcon } from '../assets/logos/common/SVG/contribuer.svg';
 import { ReactComponent as AssistantIcon } from '../assets/logos/common/SVG/assistance.svg';
 import { ReactComponent as HomeIcon } from '../assets/logos/common/SVG/home.svg';
-import { ReactComponent as ExploreIcon } from '../assets/logos/common/SVG/cas_dusage.svg';
-import { ReactComponent as SearchIcon } from '../assets/logos/common/SVG/rechercher_selected.svg';
+import { ReactComponent as ExploreIcon } from '../assets/logos/common/SVG/explorer.svg';
+import { ReactComponent as SearchIcon } from '../assets/logos/common/SVG/rechercher.svg';
 
 const HomePage = () => {
   return (

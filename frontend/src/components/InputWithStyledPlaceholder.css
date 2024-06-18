@@ -1,0 +1,13 @@
+.inputHolderContainer {
+    position: relative;
+}
+
+.input-placeholder {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #aaa;
+    z-index: 1;
+}
+

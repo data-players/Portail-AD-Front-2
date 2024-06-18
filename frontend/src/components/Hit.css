@@ -17,8 +17,17 @@ a.hit-link:hover {
 .hit-data-source,
 .hit-department {
     display: flex;
-    align-items: center;
     gap: 10px;
+}
+
+.hit-keyword-icon {
+    align-items:flex-start;
+}
+
+.hit-topic,
+.hit-data-source,
+.hit-department {
+    align-items: center;
 }
 
 .keyword-container {
@@ -45,4 +54,16 @@ a.hit-link:hover {
 .ais-Highlight mark {
     background-color: #C5E4F8;
     color: inherit;
+}
+
+.hit-details {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.hit-separator {
+    margin: 10px 0;
+    opacity: 0.5;
 }

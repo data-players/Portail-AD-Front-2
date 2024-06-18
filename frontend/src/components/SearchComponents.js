@@ -19,6 +19,8 @@ import './SearchComponents.css';
 import { ReactComponent as ThematiqueIcon } from '../assets/logos/common/SVG/thématique.svg';
 import { ReactComponent as TagIcon } from '../assets/logos/common/SVG/tag.svg';
 import { ReactComponent as DepartementIcon } from '../assets/logos/common/SVG/departement.svg';
+import { ReactComponent as DidacticielIcon } from '../assets/logos/common/SVG/didacticiel.svg';
+import InputWithStyledPlaceholder from './InputWithStyledPlaceholder';
 
 const SearchComponents = () => {
 
@@ -27,7 +29,7 @@ const SearchComponents = () => {
       if (document.querySelector('.ais-SearchBox-input')) {
         setRun(true);
       }
-    }, 1); // Délai de 500 ms pour s'assurer que les éléments sont montés
+    }, 1);
     return () => clearTimeout(timer);
   }, []);
 
@@ -78,13 +80,11 @@ const SearchComponents = () => {
       createURL({ qsModule, routeState, location }) {
         const { protocol, hostname, port = '', pathname, hash } = location;
         const portWithPrefix = port === '' ? '' : `:${port}`;
-        // eslint-disable-next-line no-unused-vars
         const [hashPath, hashQuery = ''] = hash.slice(1).split('?');
         const queryParameters = qsModule.stringify(routeState);
         return `${protocol}//${hostname}${portWithPrefix}${pathname}#${hashPath}?${queryParameters}`;
       },
       parseURL({ qsModule, location }) {
-        // eslint-disable-next-line no-unused-vars
         const [hashPath, hashQuery = ''] = location.hash.slice(1).split('?');
         const routeState = qsModule.parse(hashQuery);
         return routeState;
@@ -104,13 +104,10 @@ const SearchComponents = () => {
     }),
     stateMapping: {
       stateToRoute(uiState) {
-        console.log('stateToRoute')
         const indexUiState = uiState['documents'];
         return indexUiState;
-
       },
       routeToState(routeState) {
-        console.log('routeToState', routeState)
         setInitialRouteState(routeState);
         return {
           documents: routeState,
@@ -118,8 +115,6 @@ const SearchComponents = () => {
       },
     },
   };
-
-
 
   return (
     <>
@@ -171,18 +166,39 @@ const SearchComponents = () => {
                 }} />
             </CollapsibleFilter>
           </div>
-          <div className="searchResult">
-            <SearchBox className="searchBox" />
-            <Stats />
-            <InfiniteHits
-              hitComponent={Hit}
-              classNames={{
-                item: 'itemCustom'
-              }}
-            />
+          <div className="searchPanel">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <InputWithStyledPlaceholder className="searchBoxWithStyledPlaceholder"
+                placeholder={(
+                  <div className="placeholderText"><strong>Commencer votre recherche</strong> (taper un mot clé ou une phrase)</div>
+                )}
+              >
+                <SearchBox className="searchBox" />
+              </InputWithStyledPlaceholder>
+              <DidacticielIcon className="didacticiel-icon" />
+            </div>
+            <div>
+              <Stats translations={{
+                rootElementText({ nbHits, processingTimeMS, nbSortedHits, areHitsSorted }) {
+                  return `${nbHits.toLocaleString()} results trouvé en ${processingTimeMS.toLocaleString()}ms`;
+                }
+              }} />
+            </div>
+            <div className="searchResult" >
+              <InfiniteHits
+                hitComponent={Hit}
+                classNames={{
+                  item: 'itemCustom'
+                }}
+                translations={{
+                  showPreviousButtonText: 'Charger les resultats précedents',
+                  showMoreButtonText: 'Charger plus de résultats',
+                }}
+              />
+            </div>
           </div>
         </div>
-      </InstantSearch>
+      </InstantSearch >
       <Joyride
         steps={steps}
         run={run}
