@@ -9,7 +9,7 @@ import './SideBar.css';
 const routes = [
   { path: '/search', label: 'Rechercher', section: 'middle', icon: <SearchIcon />, id: 'search-link' },
   { path: '/explore', label: 'Explorer', section: 'middle', icon: <ExploreIcon />, id: 'explore-link' },
-  { path: 'https://wiki.portail-alimentation-durable.fr', label: 'Wiki', section: 'bottom', icon: <WikiIcon />, id: 'wiki-link', isExternal: true },
+  { path: 'https://wiki.portail-alimentation-durable.fr', label: 'Documentation', section: 'bottom', icon: <WikiIcon />, id: 'wiki-link', isExternal: true },
 ];
 
 const Sidebar = () => {

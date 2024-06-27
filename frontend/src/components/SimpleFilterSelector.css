@@ -73,6 +73,7 @@
   transition: transform 0.2s;
   display: flex;
   height: 60px;
+  font-size: 12px;
   align-items: center;
   justify-content: center;
   color: black; /* Couleur de police de la sidebar */
