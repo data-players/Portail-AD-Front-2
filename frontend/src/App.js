@@ -7,7 +7,7 @@ import Sidebar from './components/SideBar';
 import HomePage from './components/HomePage';
 
 const DefaultRedirect = () => {
-  return <Navigate to={'/home'} />;
+  return <Navigate to={'/search'} />;
 };
 
 

@@ -19,9 +19,9 @@ const Hit = ({ hit }) => {
         <div>
           <a href={hit.homePage} target="_blank" rel="noreferrer" className="hit-link">
             <div>
-              <h1 className="hit-name">
+              <h2 className="hit-name hit-title">
                 <Highlight attribute="title" hit={hit} />
-              </h1>
+              </h2>
             </div>
           </a>
         </div>

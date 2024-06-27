@@ -41,6 +41,10 @@
   .ais-RefinementList-count {
     margin-left: 10px;
   }
+
+  [class^=ais-] {
+    font-size: inherit !important
+}
   
   .searchResult {
     overflow-y:auto !important;

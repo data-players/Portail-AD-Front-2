@@ -50,3 +50,11 @@
   filter: invert(1);
 }
 
+.sidebar .external-link:hover {
+  color: darkblue;
+}
+
+.sidebar .external-link:hover svg path,
+.sidebar .external-link:hover svg rect {
+  stroke: darkblue; /* Change la couleur des lignes du SVG */
+}

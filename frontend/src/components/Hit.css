@@ -67,3 +67,20 @@ a.hit-link:hover {
     margin: 10px 0;
     opacity: 0.5;
 }
+
+.hit-title {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.hit-title::after {
+  content: '';
+  display: block;
+  width: 50px; /* Ajustez la largeur selon vos besoins */
+  height: 2px; /* Ajustez la hauteur selon vos besoins */
+  background-color: #88BDED; /* Couleur bleue */
+  position: absolute;
+  bottom: -10px; /* Ajustez la position selon vos besoins */
+  left: 0;
+}

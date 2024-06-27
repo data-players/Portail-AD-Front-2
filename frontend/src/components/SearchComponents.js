@@ -35,6 +35,10 @@ const SearchComponents = () => {
 
   const [run, setRun] = useState(false);
   const [initialRouteState, setInitialRouteState] = useState({});
+  
+  const handleDidacticielClick = () => {
+    setRun(true);
+  };
 
   const steps = [
     {
@@ -70,7 +74,23 @@ const SearchComponents = () => {
         },
       },
     },
+    {
+      target: '#explore-link',
+      content: (
+        <>
+          <h1>Explorer</h1>
+        </>
+      ),
+      placement: 'right',
+      styles: {
+        options: {
+          width: 300,
+        },
+      },
+    },
   ];
+
+
 
   const routing = {
     router: history({
@@ -120,6 +140,7 @@ const SearchComponents = () => {
     },
   };
 
+ 
   return (
     <>
       <InstantSearch indexName="documents" searchClient={searchClient} routing={routing}>
@@ -127,7 +148,7 @@ const SearchComponents = () => {
         <div className="searchContainer">
           <div className="sideFilters">
             <div className="filtersHeader">
-              <h2>Rechercher</h2>
+              <h1>Rechercher</h1>
               <ClearRefinements translations={{
                 resetButtonText: 'Réinitialiser les filtres',
               }} classNames={{
@@ -179,12 +200,12 @@ const SearchComponents = () => {
               >
                 <SearchBox className="searchBox" />
               </InputWithStyledPlaceholder>
-              <DidacticielIcon className="didacticiel-icon" />
+              <DidacticielIcon className="didacticiel-icon" onClick={handleDidacticielClick} />
             </div>
             <div>
               <Stats translations={{
                 rootElementText({ nbHits, processingTimeMS, nbSortedHits, areHitsSorted }) {
-                  return `${nbHits.toLocaleString()} results trouvé en ${processingTimeMS.toLocaleString()}ms`;
+                  return `${nbHits.toLocaleString()} resultats trouvé en ${processingTimeMS.toLocaleString()}ms`;
                 }
               }} />
             </div>
