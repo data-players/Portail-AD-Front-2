@@ -110,9 +110,9 @@ const SearchComponents = () => {
 
   const routing = {
     router: history({
-      windowTitle({ query }) {
-        return query ? `Search results for "${query}"` : 'Search';
-      },
+      // windowTitle({ query }) {
+      //   return query ? `Search results for "${query}"` : 'Search';
+      // },
       createURL({ qsModule, routeState, location }) {
         const { protocol, hostname, port = '', pathname, hash } = location;
         const portWithPrefix = port === '' ? '' : `:${port}`;
