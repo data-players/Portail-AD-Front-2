@@ -38,14 +38,15 @@ const DataDisplay = () => {
   return (
     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <div className="title">
-        <h1> Explorer par thématique ou département</h1>
+        <h1> Explorer par thématique ou par région</h1>
+        <hr className="title-underline" />
       </div>
       <div className="content" style={{flexShrink:1}}>
         <div className="themes-container">
           <div className="themes-header">
             <div className="header-left">
               <span><ThematiqueIcon /></span>
-              <h2>Themes</h2>
+              <span className='body2 margin-left'>Thematiques</span>
             </div>
           </div>
           <div className="container">
@@ -60,7 +61,7 @@ const DataDisplay = () => {
           <div className="departments-header">
             <div className="header-left">
               <span><DepartementIcon /></span>
-              <h2>Départements</h2>
+              <span className='body2 margin-left'>Départements</span>
             </div>
             <div className="switch-container">
               <span className="switch-label">Carte</span>

@@ -7,7 +7,16 @@
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    color: #aaa;
     z-index: 1;
 }
+
+.placeholderText {
+    color: black;
+}
+
+.placeholderText-subtitle {
+    color: #828282;
+}
+
+
 

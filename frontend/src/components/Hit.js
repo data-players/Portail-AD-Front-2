@@ -19,18 +19,18 @@ const Hit = ({ hit }) => {
         <div>
           <a href={hit.homePage} target="_blank" rel="noreferrer" className="hit-link">
             <div>
-              <h2 className="hit-name hit-title">
+              <span className="body1 hit-name hit-title">
                 <Highlight attribute="title" hit={hit} />
-              </h2>
+              </span>
             </div>
           </a>
         </div>
-        <div>
-          <Highlight attribute="description" hit={hit} />
+        <div className='body3'>
+          <Highlight attribute="description" hit={hit}/>
         </div>
         <div className="hit-details">
           {hit.hasTopic && (
-            <div className="hit-topic">
+            <div className="hit-topic body3">
               <div>
                 <ThematiqueIcon />
               </div>
@@ -40,7 +40,7 @@ const Hit = ({ hit }) => {
             </div>
           )}
           {hit.hasDepartment && (
-            <div className="hit-department">
+            <div className="hit-department body3">
               <div>
                 <DepartementIcon />
               </div>
@@ -50,7 +50,7 @@ const Hit = ({ hit }) => {
             </div>
           )}
           {hit.hasDataSource && (
-            <div className="hit-data-source">
+            <div className="hit-data-source body3">
               <div>
                 <RessourceIcon />
               </div>
@@ -63,7 +63,7 @@ const Hit = ({ hit }) => {
 
         {hit?._highlightResult?.hasKeyword &&  (
           <div className="hit-details">
-            <div className="hit-keyword">
+            <div className="hit-keyword body3">
               <div className="hit-keyword-icon">
                 <TagIcon />
               </div>

@@ -42,7 +42,7 @@
 .container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 10px;
 }
 
 @media (max-width: 1920px) {
@@ -64,15 +64,14 @@
 }
 
 .card {
-  background-color: white; /* Couleur de fond de la sidebar */
+  background-color: white;
   border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
+  padding: 5px;
   box-sizing: border-box;
   text-align: center;
   transition: transform 0.2s;
   display: flex;
-  height: 60px;
+  height: 50px;
   font-size: 12px;
   align-items: center;
   justify-content: center;
@@ -150,4 +149,18 @@ input:checked + .slider:before {
 
 .title h1 {
   text-align: center;
+}
+
+.title-underline {
+  width: 80px; /* Ajustez la largeur selon vos besoins */
+  border: 0;
+  border-top: 4px solid #333;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+
+.margin-left {
+  margin-left: 10px; /* Ajustez la valeur selon vos besoins */
 }

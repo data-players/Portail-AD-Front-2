@@ -13,7 +13,19 @@
   margin-bottom: 10px;
 }
 
+.filter-header-content {
+  display: flex;
+  align-items: center;
+}
+
 .filter-icon {
     margin-right: 10px;
 }
 
+.filter-title {
+  font-weight: bold;
+}
+
+.chevron.down {
+  transform: rotate(180deg);
+}

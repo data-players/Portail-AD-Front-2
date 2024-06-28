@@ -24,20 +24,36 @@ import InputWithStyledPlaceholder from './InputWithStyledPlaceholder';
 
 const SearchComponents = () => {
 
+  const [run, setRun] = useState(false);
+  const [key, setKey] = useState(0);
+  const [initialRouteState, setInitialRouteState] = useState({});
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (document.querySelector('.ais-SearchBox-input')) {
-        setRun(true);
-      }
-    }, 1);
-    return () => clearTimeout(timer);
+    const hasSeenJoyride = localStorage.getItem('hasSeenJoyride');
+    if (!hasSeenJoyride) {
+      const timer = setTimeout(() => {
+        if (document.querySelector('.ais-SearchBox-input')) {
+          setRun(true);
+        }
+      }, 1);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
-  const [run, setRun] = useState(false);
-  const [initialRouteState, setInitialRouteState] = useState({});
-  
   const handleDidacticielClick = () => {
+    setRun(false);
+    setKey(prevKey => prevKey + 1);
     setRun(true);
+  };
+
+  const handleJoyrideCallback = (data) => {
+    const { status, action } = data;
+    const finishedStatuses = ['finished', 'skipped'];
+
+    if (finishedStatuses.includes(status) || action === 'skip') {
+      localStorage.setItem('hasSeenJoyride', 'true');
+      setRun(false);
+    }
   };
 
   const steps = [
@@ -45,7 +61,7 @@ const SearchComponents = () => {
       target: '.ais-SearchBox-input',
       content: (
         <>
-          <h1>Barre de recherche</h1>
+          <h3>Barre de recherche</h3>
           <p>Vous pouvez taper un ou plusieurs mots-clés, les résultats de recherche sont mis à jour directement.</p>
           <p>Pour chercher un terme ou expression stricte, ajoutez des guillemets autour. Ex: "projet alimentaire territorial</p>
           <p>Si votre mot-clé comporte une faute d'orthographe ou s'approche d'un autre mot, l'outil le reconnaîtra et remontera les résultats qui s'approchent de votre intention de recherche</p>
@@ -59,10 +75,10 @@ const SearchComponents = () => {
       },
     },
     {
-      target: '.filter-container',
+      target: '.filtersGroup',
       content: (
         <>
-          <h1>Filtres</h1>
+          <h3>Filtres</h3>
           <p>Vous pouvez sélectionner un ou plusieurs filtres, qui sont combinés pour actualiser la liste des résultats</p>
           <p>Tous les contenus apparaissant dans les résultats de recherche proviennent de centres de ressources ou d'observatoires reconnus et qualifiés par nos soins, pour lesquels une convention de partenariat et de mise à disposition des données a été mise en place.</p>
         </>
@@ -78,7 +94,7 @@ const SearchComponents = () => {
       target: '#explore-link',
       content: (
         <>
-          <h1>Explorer</h1>
+          <h3>Explorer</h3>
         </>
       ),
       placement: 'right',
@@ -148,54 +164,57 @@ const SearchComponents = () => {
         <div className="searchContainer">
           <div className="sideFilters">
             <div className="filtersHeader">
-              <h1>Rechercher</h1>
+              <span className="subtitle2">Rechercher</span>
               <ClearRefinements translations={{
                 resetButtonText: 'Réinitialiser les filtres',
               }} classNames={{
                 button: 'clearRefinementsButton',
               }} />
             </div>
-            <CollapsibleFilter title="Département" initialRouteState={initialRouteState} attribute="hasDepartment" icon={<DepartementIcon />}>
-              <RefinementList attribute="hasDepartment" showMore={true} showMoreLimit={1000} translations={{
-                showMoreButtonText({ isShowingMore }) {
-                  return isShowingMore ? 'Afficher moins' : 'Afficher plus';
-                },
-                noResults: 'Aucun résultat'
-              }}
-                classNames={{
-                  showMore: 'showMoreButton',
-                }} />
-            </CollapsibleFilter>
-            <hr style={{ margin: '10px 0', opacity: 0.5 }} />
-            <CollapsibleFilter title="Thèmatique" initialRouteState={initialRouteState} attribute="hasTopic" icon={<ThematiqueIcon />}>
-              <RefinementList attribute="hasTopic" showMore={true} showMoreLimit={1000} translations={{
-                showMoreButtonText({ isShowingMore }) {
-                  return isShowingMore ? 'Afficher moins' : 'Afficher plus';
-                },
-                noResults: 'Aucun résultat'
-              }}
-                classNames={{
-                  showMore: 'showMoreButton',
-                }} />
-            </CollapsibleFilter>
-            <hr style={{ margin: '10px 0', opacity: 0.5 }} />
-            <CollapsibleFilter title="Tag" initialRouteState={initialRouteState} attribute="hasKeyword" icon={<TagIcon />}>
-              <RefinementList attribute="hasKeyword" showMore={true} showMoreLimit={1000} translations={{
-                showMoreButtonText({ isShowingMore }) {
-                  return isShowingMore ? 'Afficher moins' : 'Afficher plus';
-                },
-                noResults: 'Aucun résultat'
-              }}
-                classNames={{
-                  showMore: 'showMoreButton',
-                }} />
-            </CollapsibleFilter>
+            <div className="filtersGroup">
+              <hr style={{ margin: '10px 0', opacity: 0.5 }} />
+              <CollapsibleFilter title="Département" initialRouteState={initialRouteState} attribute="hasDepartment" icon={<DepartementIcon />}>
+                <RefinementList attribute="hasDepartment" showMore={true} showMoreLimit={1000} translations={{
+                  showMoreButtonText({ isShowingMore }) {
+                    return isShowingMore ? 'Afficher moins' : 'Afficher plus';
+                  },
+                  noResults: 'Aucun résultat'
+                }}
+                  classNames={{
+                    showMore: 'showMoreButton',
+                  }} />
+              </CollapsibleFilter>
+              <hr style={{ margin: '10px 0', opacity: 0.5 }} />
+              <CollapsibleFilter title="Thèmatique" initialRouteState={initialRouteState} attribute="hasTopic" icon={<ThematiqueIcon />}>
+                <RefinementList attribute="hasTopic" showMore={true} showMoreLimit={1000} translations={{
+                  showMoreButtonText({ isShowingMore }) {
+                    return isShowingMore ? 'Afficher moins' : 'Afficher plus';
+                  },
+                  noResults: 'Aucun résultat'
+                }}
+                  classNames={{
+                    showMore: 'showMoreButton',
+                  }} />
+              </CollapsibleFilter>
+              <hr style={{ margin: '10px 0', opacity: 0.5 }} />
+              <CollapsibleFilter title="Tag" initialRouteState={initialRouteState} attribute="hasKeyword" icon={<TagIcon />}>
+                <RefinementList attribute="hasKeyword" showMore={true} showMoreLimit={1000} translations={{
+                  showMoreButtonText({ isShowingMore }) {
+                    return isShowingMore ? 'Afficher moins' : 'Afficher plus';
+                  },
+                  noResults: 'Aucun résultat'
+                }}
+                  classNames={{
+                    showMore: 'showMoreButton',
+                  }} />
+              </CollapsibleFilter>
+            </div>
           </div>
           <div className="searchPanel">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <InputWithStyledPlaceholder className="searchBoxWithStyledPlaceholder"
                 placeholder={(
-                  <div className="placeholderText"><strong>Commencer votre recherche</strong> (taper un mot clé ou une phrase)</div>
+                  <div className="placeholderText"><strong>Commencer votre recherche</strong> <span className="placeholderText-subtitle">(taper un mot clé ou une phrase)</span></div>
                 )}
               >
                 <SearchBox className="searchBox" />
@@ -203,11 +222,16 @@ const SearchComponents = () => {
               <DidacticielIcon className="didacticiel-icon" onClick={handleDidacticielClick} />
             </div>
             <div>
-              <Stats translations={{
-                rootElementText({ nbHits, processingTimeMS, nbSortedHits, areHitsSorted }) {
-                  return `${nbHits.toLocaleString()} resultats trouvé en ${processingTimeMS.toLocaleString()}ms`;
-                }
-              }} />
+              <Stats 
+                translations={{
+                  rootElementText({ nbHits, processingTimeMS, nbSortedHits, areHitsSorted }) {
+                    return `${nbHits.toLocaleString()} resultats trouvé en ${processingTimeMS.toLocaleString()}ms`;
+                  }
+                }} 
+                classNames={{
+                  root: 'customStats'
+                }}
+              />
             </div>
             <div className="searchResult" >
               <InfiniteHits
@@ -225,13 +249,15 @@ const SearchComponents = () => {
         </div>
       </InstantSearch >
       <Joyride
+        key={key}
         steps={steps}
         run={run}
         continuous={true}
         scrollToFirstStep={true}
         showProgress={true}
         showSkipButton={true}
-        locale={{ back: 'Retour', close: 'Fermer', last: 'Fin', next: 'Suivant', open: 'Ouvrire le guide', skip: 'Passer' }}
+        callback={handleJoyrideCallback}
+        locale={{ back: 'Retour', close: 'Fermer', last: 'Fin', next: 'Suivant', open: 'Ouvrire le didacticiel', skip: 'Passer' }}
         styles={{
           options: {
             zIndex: 10000,

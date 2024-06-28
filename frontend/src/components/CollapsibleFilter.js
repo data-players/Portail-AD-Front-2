@@ -14,9 +14,9 @@ const CollapsibleFilter = ({ title, initialRouteState, attribute, children, icon
   return (
     <div className="filter-container">
       <div className="filter-header" onClick={() => setIsOpen(!isOpen)}>
-        <div>
+        <div className="filter-header-content">
           {icon && <span className="filter-icon">{icon}</span>}
-          <span>{title}</span>
+          <span className='body2 filter-title'>{title}</span>
         </div>
         <span className={`chevron ${isOpen ? 'up' : 'down'}`}>▼</span>
       </div>

@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as PortalSvgIcon } from '../assets/logos/common/SVG/logo blanc.svg';
 import { ReactComponent as ExploreIcon } from '../assets/logos/common/SVG/explorer.svg';
 import { ReactComponent as SearchIcon } from '../assets/logos/common/SVG/rechercher.svg';
-import { ReactComponent as WikiIcon } from '../assets/logos/common/SVG/wiki.svg';
+import { ReactComponent as WikiIcon } from '../assets/logos/common/SVG/documentation.svg';
 import './SideBar.css';
 
 const routes = [

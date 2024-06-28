@@ -3,13 +3,33 @@
   }
 
   .searchBox input  {
-    border-radius: 20px;
-    padding: 10px;
+    border-radius: 30px;
+    padding: 20px;
     padding-left: 50px;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 1.6px 8px rgba(0, 0, 0, 0.08);
+  
   }
   .searchBox button  {
     margin-left: 15px;
   }
+
+  .clearRefinementsButton{
+    color: #343A33;
+    border-radius: 20px;  
+    padding: 10px;
+    background-color: #B9FF66;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px!important;
+    font-weight: bold;
+    line-height: 16px!important;
+    padding: 15px;
+  }
+  
+  .clearRefinementsButton:disabled{
+    background-color: #F3F2F1;
+  }
+
   
   .ais-RefinementList-label {
     display: flex;
@@ -43,8 +63,8 @@
   }
 
   [class^=ais-] {
-    font-size: inherit !important
-}
+    font-size: inherit !important;
+  }
   
   .searchResult {
     overflow-y:auto !important;
@@ -60,11 +80,13 @@
 
   .sideFilters {
     flex-basis: 30%;
-    padding-right: 20px;
+    /* padding-right: 20px; */
+    box-shadow: 0px 18.95px 47.38px 0px #7773AA1A;
   }
 
   .searchPanel {
     flex-basis: 70%;
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     height : 90vh;
@@ -97,16 +119,6 @@
     padding: 10px;
   }
 
-  .clearRefinementsButton{
-    color: black;
-    border-radius: 20px;  
-    padding: 10px;
-    background-color: #B9FF66;
-  }
-  
-  .clearRefinementsButton:disabled{
-    background-color: #F3F2F1;
-  }
 
   .filtersHeader {
     display: flex;
@@ -134,3 +146,20 @@
     width: 70%;
   }
 
+  .didacticiel-icon {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 30px;
+    /* gray/200 */
+    border: 1px solid #E5E7EB;
+    /* depth 4 */
+    box-shadow: 0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 1.6px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .customStats {
+    font-family: Raleway;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 16px;
+  }
