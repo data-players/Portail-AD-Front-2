@@ -80,7 +80,7 @@
 
   .sideFilters {
     flex-basis: 30%;
-    /* padding-right: 20px; */
+    padding: 20px;
     box-shadow: 0px 18.95px 47.38px 0px #7773AA1A;
   }
 
