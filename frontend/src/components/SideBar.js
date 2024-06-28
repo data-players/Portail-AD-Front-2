@@ -57,12 +57,13 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar-icon">
-        <Link to={`/search`}><PortalSvgIcon style={{ width: '40px', height: '40px' }} /></Link>
+        <Link to={`/search`}><PortalSvgIcon style={{ width: '50px', height: '50px' }} /></Link>
       </div>
       <div className="sidebar-middle">
         {renderLinks('middle')}
       </div>
       <div className="sidebar-bottom">
+        <div className="sidebar-divider"></div>
         {renderLinks('bottom')}
       </div>
     </div>

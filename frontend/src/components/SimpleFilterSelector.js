@@ -52,7 +52,7 @@ const DataDisplay = () => {
           <div className="container">
             {roots.map(item => (
               <Link to={`/search?refinementList[hasTopic][0]=${encodeURIComponent(item['pair:label'])}`} className="card" key={item.id}>
-                <div>{item['pair:label']}</div>
+                <div className="body3">{item['pair:label']}</div>
               </Link>
             ))}
           </div>
