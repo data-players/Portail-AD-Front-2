@@ -32,7 +32,7 @@ const Sidebar = () => {
             >
               <div className="link-content">
                 <div>{route.icon}</div>
-                <div>{route.label}</div>
+                <div className="body3">{route.label}</div>
               </div>
             </a>
           );
@@ -46,7 +46,7 @@ const Sidebar = () => {
             >
               <div className="link-content">
                 <div>{route.icon}</div>
-                <div>{route.label}</div>
+                <div className="body3">{route.label}</div>
               </div>
             </Link>
           );

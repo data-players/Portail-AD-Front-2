@@ -4,6 +4,7 @@
 body {
   margin: 0;
   height: 100vh;
+  color: #212529;
 }
 
 #root {
@@ -17,7 +18,6 @@ h1 {
   font-size: 44px;
   line-height: 56px;
   letter-spacing: 0.0075em;
-  color: #212529;
 }
 
 h2 {
@@ -25,7 +25,6 @@ h2 {
   font-weight: 500;
   font-size: 36px;
   line-height: 46px;
-  color: #212529;
 }
 
 h3 {
@@ -33,7 +32,6 @@ h3 {
   font-weight: 500;
   font-size: 28px;
   line-height: 36px;
-  color: #212529;
 }
 
 .subtitle1 {
@@ -42,7 +40,6 @@ h3 {
   font-size: 18px;
   line-height: 40px;
   text-transform: uppercase;
-  color: #212529;
 }
 
 .subtitle2 {
@@ -52,7 +49,6 @@ h3 {
   line-height: 28px;
   letter-spacing: 0.4px;
   text-transform: uppercase;
-  color: #212529;
 }
 
 .body1 {
@@ -60,7 +56,6 @@ h3 {
   font-weight: 500; /* Assurez-vous que le poids 500 est importé */
   font-size: 16px;
   line-height: 20px;
-  color: #212529;
 }
 
 .body2 {
@@ -68,7 +63,7 @@ h3 {
   font-weight: 500; /* Assurez-vous que le poids 500 est importé */
   font-size: 14px;
   line-height: 18px;
-  color: #212529;
+
 }
 
 .body3 {
@@ -76,8 +71,12 @@ h3 {
   font-weight: 500; /* Assurez-vous que le poids normal est importé */
   font-size: 12px!important;
   line-height: 16px!important;
-  color: #212529;
 }
+
+.body3.bold {
+  font-weight: bold !important;
+}
+
 
 /* Styles pour Mobile */
 @media (max-width: 768px) {
@@ -128,7 +127,6 @@ h3 {
 }
 
 .mainContent {
-  padding: 10px;
   flex-grow: 1;
   overflow: auto !important;
 }

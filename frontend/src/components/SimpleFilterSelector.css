@@ -152,9 +152,9 @@ input:checked + .slider:before {
 }
 
 .title-underline {
-  width: 80px; /* Ajustez la largeur selon vos besoins */
+  width: 40px; /* Ajustez la largeur selon vos besoins */
   border: 0;
-  border-top: 4px solid #333;
+  border-top: 2px solid #333;
   margin-left: auto;
   margin-right: auto;
   margin-top: -20px;

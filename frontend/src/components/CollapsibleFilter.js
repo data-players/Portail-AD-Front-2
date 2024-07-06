@@ -21,7 +21,7 @@ const CollapsibleFilter = ({ title, initialRouteState, attribute, children, icon
         <span className={`chevron ${isOpen ? 'up' : 'down'}`}>▼</span>
       </div>
       {isOpen && (
-        <div className="filter-content">
+        <div className="filter-content body3">
           {children}
         </div>
       )}

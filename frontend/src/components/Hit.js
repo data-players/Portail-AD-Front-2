@@ -1,5 +1,8 @@
 import React from 'react';
 import { Highlight } from 'react-instantsearch';
+import parse from 'html-react-parser';
+import DOMPurify from 'dompurify'; // Importer DOMPurify
+import he from 'he'; // Importer he
 import './Hit.css';
 import { ReactComponent as DepartementIcon } from '../assets/logos/common/SVG/departement.svg';
 import { ReactComponent as ThematiqueIcon } from '../assets/logos/common/SVG/thématique.svg';
@@ -7,12 +10,18 @@ import { ReactComponent as TagIcon } from '../assets/logos/common/SVG/tag.svg';
 import { ReactComponent as RessourceIcon } from '../assets/logos/common/SVG/ressource.svg';
 
 const Hit = ({ hit }) => {
-  console.log(hit);
+  // console.log(hit);
   if (hit.hasKeyword && !Array.isArray(hit.hasKeyword)) {
     hit.hasKeyword = [hit.hasKeyword];
     hit._highlightResult.hasKeyword = [hit._highlightResult.hasKeyword];
     hit._snippetResult.hasKeyword = [hit._snippetResult.hasKeyword];
   }
+
+  // Décoder les entités HTML
+  const decodedHTML = he.decode(hit._highlightResult.description.value);
+  // Nettoyer et sécuriser le HTML
+  const cleanHTML = DOMPurify.sanitize(decodedHTML);
+
   return (
     <>
       <article key={hit.id} className="hit-item">
@@ -25,17 +34,17 @@ const Hit = ({ hit }) => {
             </div>
           </a>
         </div>
-        <div className='body3'>
-          <Highlight attribute="description" hit={hit}/>
+        <div className='body3 hit-description'>
+          {parse(cleanHTML)}
         </div>
         <div className="hit-details">
-          {hit.hasTopic && (
-            <div className="hit-topic body3">
+          {hit.hasDataSource && (
+            <div className="hit-data-source body3">
               <div>
-                <ThematiqueIcon />
+                <RessourceIcon />
               </div>
               <div>
-                <Highlight attribute="hasTopic" hit={hit} separator=" - " />
+                <Highlight attribute="hasDataSource" hit={hit} separator=" - " />
               </div>
             </div>
           )}
@@ -49,16 +58,17 @@ const Hit = ({ hit }) => {
               </div>
             </div>
           )}
-          {hit.hasDataSource && (
-            <div className="hit-data-source body3">
+          {hit.hasTopic && (
+            <div className="hit-topic body3">
               <div>
-                <RessourceIcon />
+                <ThematiqueIcon />
               </div>
               <div>
-                <Highlight attribute="hasDataSource" hit={hit} separator=" - " />
+                <Highlight attribute="hasTopic" hit={hit} separator=" - " />
               </div>
             </div>
           )}
+
         </div>
 
         {hit?._highlightResult?.hasKeyword &&  (
@@ -77,8 +87,9 @@ const Hit = ({ hit }) => {
             </div>
           </div>
         )}
+        <hr className="hit-separator" />
       </article>
-      <hr className="hit-separator" />
+
     </>
   );
 };

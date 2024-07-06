@@ -19,11 +19,11 @@
     border-radius: 20px;  
     padding: 10px;
     background-color: #B9FF66;
-    font-family: 'Raleway', sans-serif;
-    font-size: 12px!important;
-    font-weight: bold;
-    line-height: 16px!important;
     padding: 15px;
+  }
+  .clearRefinementsButton:not([disabled]):hover{
+    box-shadow: 0px 5px 0px 0px #191A23;
+    background-color: #B9FF66;
   }
   
   .clearRefinementsButton:disabled{
@@ -53,6 +53,7 @@
   .ais-InfiniteHits-item {
     padding-top: 0 !important;
     margin-top: 0 !important;
+    margin-left: 0 !important;
     border : none !important;
     box-shadow: none !important;
     padding: 0 !important;
@@ -64,6 +65,8 @@
 
   [class^=ais-] {
     font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
   }
   
   .searchResult {
@@ -81,19 +84,21 @@
   .sideFilters {
     flex-basis: 30%;
     padding: 20px;
+    margin-right: 20px;
     box-shadow: 0px 18.95px 47.38px 0px #7773AA1A;
   }
 
   .searchPanel {
     flex-basis: 70%;
-    margin-left: 20px;
     display: flex;
     flex-direction: column;
-    height : 90vh;
+    height : 100vh;
+    padding-left: 20px;
   }
 
   .searchContainer {
     display: flex;
+    min-height: 100%;
   }
   
 
@@ -113,12 +118,18 @@
   }
 
   .showMoreButton {
-    background-color: #B9FF66;
-    color: black;
-    border-radius: 20px;  
+    background-color: #B9FF66!important;
+    border-radius: 20px; 
     padding: 10px;
+    color: black;
+    margin-bottom: 10px;
   }
 
+  .showMoreButton:hover{
+    background-color: #B9FF66;
+    box-shadow: 0px 5px 0px 0px #191A23;
+
+  }
 
   .filtersHeader {
     display: flex;
@@ -129,6 +140,11 @@
 
   .ais-InfiniteHits {
     margin-top: 20px !important;
+  }
+
+  .ais-InfiniteHits-list{
+    margin-left: 0;
+    margin-top: 0;
   }
 
   .searchBox {
@@ -163,3 +179,11 @@
     font-weight: 400;
     line-height: 16px;
   }
+
+  .searchBoxContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+

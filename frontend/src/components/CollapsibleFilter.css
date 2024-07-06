@@ -10,7 +10,6 @@
 }
 
 .filter-container {
-  margin-bottom: 10px;
 }
 
 .filter-header-content {
@@ -28,4 +27,12 @@
 
 .chevron.down {
   transform: rotate(180deg);
+}
+
+.filter-content {
+    
+}
+
+.ais-RefinementList-count {
+   margin: 1px;
 }

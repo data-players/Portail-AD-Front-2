@@ -38,7 +38,7 @@ const DataDisplay = () => {
   return (
     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <div className="title">
-        <h1> Explorer par thématique ou par région</h1>
+        <h2> Explorer par thématique ou par région</h2>
         <hr className="title-underline" />
       </div>
       <div className="content" style={{flexShrink:1}}>
@@ -46,7 +46,7 @@ const DataDisplay = () => {
           <div className="themes-header">
             <div className="header-left">
               <span><ThematiqueIcon /></span>
-              <span className='body2 margin-left'>Thematiques</span>
+              <span className='body2 margin-left'><strong>Thématiques</strong></span>
             </div>
           </div>
           <div className="container">
@@ -61,15 +61,15 @@ const DataDisplay = () => {
           <div className="departments-header">
             <div className="header-left">
               <span><DepartementIcon /></span>
-              <span className='body2 margin-left'>Départements</span>
+              <span className='body2 margin-left'><strong>Départements</strong></span>
             </div>
             <div className="switch-container">
-              <span className="switch-label">Carte</span>
+              <span className="body2">Carte</span>
               <label className="switch">
                 <input type="checkbox" checked={viewMode === 'cards'} onChange={() => setViewMode(viewMode === 'map' ? 'cards' : 'map')} />
                 <span className="slider round"></span>
               </label>
-              <span className="switch-label">liste</span>
+              <span className="body2">liste</span>
             </div>
           </div>
           {viewMode === 'map' ? (

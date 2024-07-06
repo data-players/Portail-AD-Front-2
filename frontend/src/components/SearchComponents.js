@@ -156,24 +156,26 @@ const SearchComponents = () => {
     },
   };
 
- 
+
   return (
     <>
       <InstantSearch indexName="documents" searchClient={searchClient} routing={routing}>
-        <Configure attributesToSnippet={['description:150', 'hasKeyword:4']} />
+        <Configure attributesToSnippet={['description:130', 'hasKeyword:4']} />
         <div className="searchContainer">
           <div className="sideFilters">
             <div className="filtersHeader">
               <span className="subtitle2">Rechercher</span>
-              <ClearRefinements translations={{
-                resetButtonText: 'Réinitialiser les filtres',
-              }} classNames={{
-                button: 'clearRefinementsButton',
-              }} />
+              <div className="body3 bold">
+                <ClearRefinements translations={{
+                  resetButtonText: 'Réinitialiser les filtres',
+                }} classNames={{
+                  button: 'clearRefinementsButton',
+                }} />
+              </div>
             </div>
             <div className="filtersGroup">
               <hr style={{ margin: '10px 0', opacity: 0.5 }} />
-              <CollapsibleFilter title="Département" initialRouteState={initialRouteState} attribute="hasDepartment" icon={<DepartementIcon />}>
+              <CollapsibleFilter title="Départements" initialRouteState={initialRouteState} attribute="hasDepartment" icon={<DepartementIcon />}>
                 <RefinementList attribute="hasDepartment" showMore={true} showMoreLimit={1000} translations={{
                   showMoreButtonText({ isShowingMore }) {
                     return isShowingMore ? 'Afficher moins' : 'Afficher plus';
@@ -181,11 +183,11 @@ const SearchComponents = () => {
                   noResults: 'Aucun résultat'
                 }}
                   classNames={{
-                    showMore: 'showMoreButton',
+                    showMore: 'showMoreButton body3 bold',
                   }} />
               </CollapsibleFilter>
               <hr style={{ margin: '10px 0', opacity: 0.5 }} />
-              <CollapsibleFilter title="Thèmatique" initialRouteState={initialRouteState} attribute="hasTopic" icon={<ThematiqueIcon />}>
+              <CollapsibleFilter title="Thématiques" initialRouteState={initialRouteState} attribute="hasTopic" icon={<ThematiqueIcon />}>
                 <RefinementList attribute="hasTopic" showMore={true} showMoreLimit={1000} translations={{
                   showMoreButtonText({ isShowingMore }) {
                     return isShowingMore ? 'Afficher moins' : 'Afficher plus';
@@ -193,11 +195,11 @@ const SearchComponents = () => {
                   noResults: 'Aucun résultat'
                 }}
                   classNames={{
-                    showMore: 'showMoreButton',
+                    showMore: 'showMoreButton body3 bold',
                   }} />
               </CollapsibleFilter>
               <hr style={{ margin: '10px 0', opacity: 0.5 }} />
-              <CollapsibleFilter title="Tag" initialRouteState={initialRouteState} attribute="hasKeyword" icon={<TagIcon />}>
+              <CollapsibleFilter title="Tags" initialRouteState={initialRouteState} attribute="hasKeyword" icon={<TagIcon />}>
                 <RefinementList attribute="hasKeyword" showMore={true} showMoreLimit={1000} translations={{
                   showMoreButtonText({ isShowingMore }) {
                     return isShowingMore ? 'Afficher moins' : 'Afficher plus';
@@ -205,14 +207,14 @@ const SearchComponents = () => {
                   noResults: 'Aucun résultat'
                 }}
                   classNames={{
-                    showMore: 'showMoreButton',
+                    showMore: 'showMoreButton body3 bold',
                   }} />
               </CollapsibleFilter>
             </div>
           </div>
           <div className="searchPanel">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <InputWithStyledPlaceholder className="searchBoxWithStyledPlaceholder"
+            <div className="searchBoxContainer">
+              <InputWithStyledPlaceholder className="searchBoxWithStyledPlaceholder body2"
                 placeholder={(
                   <div className="placeholderText"><strong>Commencer votre recherche</strong> <span className="placeholderText-subtitle">(taper un mot clé ou une phrase)</span></div>
                 )}
@@ -222,22 +224,23 @@ const SearchComponents = () => {
               <DidacticielIcon className="didacticiel-icon" onClick={handleDidacticielClick} />
             </div>
             <div>
-              <Stats 
+              <Stats
                 translations={{
                   rootElementText({ nbHits, processingTimeMS, nbSortedHits, areHitsSorted }) {
-                    return `${nbHits.toLocaleString()} resultats trouvé en ${processingTimeMS.toLocaleString()}ms`;
+                    return `${nbHits.toLocaleString()} resultats trouvés en ${processingTimeMS.toLocaleString()}ms`;
                   }
-                }} 
+                }}
                 classNames={{
                   root: 'customStats'
                 }}
               />
             </div>
-            <div className="searchResult" >
+            <div className="searchResult body3 bold" >
               <InfiniteHits
                 hitComponent={Hit}
                 classNames={{
-                  item: 'itemCustom'
+                  item: 'itemCustom',
+                  loadMore : 'showMoreButton'
                 }}
                 translations={{
                   showPreviousButtonText: 'Charger les resultats précedents',

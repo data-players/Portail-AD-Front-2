@@ -52,6 +52,10 @@ a.hit-link:hover {
     background-color: #C5E4F8;
 }
 
+.hit-description mark {
+    background-color: #C5E4F8;
+}
+
 .ais-Highlight mark {
     background-color: #C5E4F8;
     color: inherit;
@@ -87,4 +91,8 @@ a.hit-link:hover {
   position: absolute;
   bottom: -10px;
   left: 0;
+}
+
+.hit-item{
+    padding-right: 40px;
 }
