@@ -27,36 +27,8 @@ const SearchComponents = () => {
   const [run, setRun] = useState(false);
   const [key, setKey] = useState(0);
   const [initialRouteState, setInitialRouteState] = useState({});
-
-  useEffect(() => {
-    const hasSeenJoyride = localStorage.getItem('hasSeenJoyride');
-    if (!hasSeenJoyride) {
-      const timer = setTimeout(() => {
-        if (document.querySelector('.ais-SearchBox-input')) {
-          setRun(true);
-        }
-      }, 1);
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
-  const handleDidacticielClick = () => {
-    setRun(false);
-    setKey(prevKey => prevKey + 1);
-    setRun(true);
-  };
-
-  const handleJoyrideCallback = (data) => {
-    const { status, action } = data;
-    const finishedStatuses = ['finished', 'skipped'];
-
-    if (finishedStatuses.includes(status) || action === 'skip') {
-      localStorage.setItem('hasSeenJoyride', 'true');
-      setRun(false);
-    }
-  };
-
-  const steps = [
+  const [stepIndex, setStepIndex] = useState(0);
+  const [steps, setSteps] = useState([
     {
       target: '.ais-SearchBox-input',
       content: (
@@ -73,6 +45,7 @@ const SearchComponents = () => {
           width: 300,
         },
       },
+      disableBeacon: false,
     },
     {
       target: '.filtersGroup',
@@ -89,6 +62,7 @@ const SearchComponents = () => {
           width: 300,
         },
       },
+      disableBeacon: false,
     },
     {
       target: '#explore-link',
@@ -103,16 +77,38 @@ const SearchComponents = () => {
           width: 300,
         },
       },
+      disableBeacon: false,
     },
-  ];
+  ]);
 
+  useEffect(() => {
+    const hasSeenJoyride = localStorage.getItem('hasSeenJoyride');
+    if (!hasSeenJoyride) {
+      setRun(true);
+      setStepIndex(0);
+    }
+  }, []);
 
+  const handleDidacticielClick = () => {
+    setRun(false);
+    setKey(prevKey => prevKey + 1);
+    setStepIndex(0);
+    setSteps(prevSteps => prevSteps.map(step => ({ ...step, disableBeacon: true })));
+    setRun(true);
+  };
+
+  const handleJoyrideCallback = (data) => {
+    const { status, action } = data;
+    const finishedStatuses = ['finished', 'skipped'];
+
+    if (finishedStatuses.includes(status) || action === 'skip') {
+      localStorage.setItem('hasSeenJoyride', 'true');
+      setRun(false);
+    }
+  };
 
   const routing = {
     router: history({
-      // windowTitle({ query }) {
-      //   return query ? `Search results for "${query}"` : 'Search';
-      // },
       createURL({ qsModule, routeState, location }) {
         const { protocol, hostname, port = '', pathname, hash } = location;
         const portWithPrefix = port === '' ? '' : `:${port}`;
@@ -255,6 +251,7 @@ const SearchComponents = () => {
         key={key}
         steps={steps}
         run={run}
+        stepIndex={stepIndex}
         continuous={true}
         scrollToFirstStep={true}
         showProgress={true}

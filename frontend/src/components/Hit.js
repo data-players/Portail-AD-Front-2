@@ -15,7 +15,21 @@ const Hit = ({ hit }) => {
     hit.hasKeyword = [hit.hasKeyword];
     hit._highlightResult.hasKeyword = [hit._highlightResult.hasKeyword];
     hit._snippetResult.hasKeyword = [hit._snippetResult.hasKeyword];
+  } else if (hit.hasKeyword && Array.isArray(hit.hasKeyword)) {
+    console.log(hit);
+    const TagLength = 5;
+    hit.hasKeyword = hit.hasKeyword.filter((keyword, index) => {
+      return index < TagLength || hit._highlightResult.hasKeyword[index].value.includes('mark');
+    });
+    hit._highlightResult.hasKeyword = hit._highlightResult.hasKeyword.filter((highlight, index) => {
+      return index < TagLength || highlight.value.includes('mark');
+    });
+    hit._snippetResult.hasKeyword = hit._snippetResult.hasKeyword.filter((snippet, index) => {
+      return index < TagLength || snippet.value.includes('mark');
+    });
   }
+
+
 
   // Décoder les entités HTML
   const decodedHTML = he.decode(hit._highlightResult.description.value);
