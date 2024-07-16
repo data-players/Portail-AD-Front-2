@@ -98,13 +98,19 @@ const SearchComponents = () => {
   };
 
   const handleJoyrideCallback = (data) => {
-    const { status, action } = data;
+    const { status, action, index,lifecycle } = data;
     const finishedStatuses = ['finished', 'skipped'];
 
     if (finishedStatuses.includes(status) || action === 'skip') {
       localStorage.setItem('hasSeenJoyride', 'true');
       setRun(false);
     }
+    else if (action === 'next' && lifecycle==='complete') {
+      setStepIndex(index + 1);
+    } else if (action === 'prev' && lifecycle==='complete') {
+      setStepIndex(index - 1);
+    }
+
   };
 
   const routing = {
