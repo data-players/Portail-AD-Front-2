@@ -71,6 +71,7 @@
   
   .searchResult {
     overflow-y:auto !important;
+    overflow-x: hidden !important;
   }
 
   .ais-InfiniteHits-item {
@@ -94,6 +95,7 @@
     flex-direction: column;
     height : 100vh;
     padding-left: 20px;
+    width: 70%;
   }
 
   .searchContainer {
