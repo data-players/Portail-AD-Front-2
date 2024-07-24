@@ -4,9 +4,10 @@ let isFetchingGeoData = false;
 
 export const fetchDataTopic = async (dispatch, getState) => {
   const { loadingTopic } = getState();
+
   if (loadingTopic || isFetchingTopic) return;
   isFetchingTopic = true;
-  
+  console.log('loadingTopic', loadingTopic);
   dispatch({ type: 'FETCH_START_Topic' });
   try {
     const response = await fetch('https://data.portail-alimentation-durable.data-players.com/themes', {
@@ -23,6 +24,7 @@ export const fetchDataTopic = async (dispatch, getState) => {
 
 export const fetchDataDepartment = async (dispatch, getState) => {
   const { loadingDepartment } = getState();
+  // console.log('loadingDepartment', loadingDepartment);
   if (loadingDepartment || isFetchingDepartment) return;
   isFetchingDepartment = true;
   

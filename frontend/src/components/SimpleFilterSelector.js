@@ -12,7 +12,7 @@ const DataDisplay = () => {
   const { dataTopic, dataDepartment, loading, error } = state;
   const [viewMode, setViewMode] = useState('map'); // 'map' or 'cards'
   const roots = dataTopic?.filter(t => t['pair:broader'] === undefined);
-  const orderedDataDepartment = dataDepartment.sort((a, b) => {
+  const orderedDataDepartment = dataDepartment?.sort((a, b) => {
     const numA = parseInt(a['pair:departmentNb'], 10);
     const numB = parseInt(b['pair:departmentNb'], 10);
     if (!isNaN(numA) && !isNaN(numB)) {
@@ -23,9 +23,13 @@ const DataDisplay = () => {
   });
 
   useEffect(() => {
-    fetchDataTopic(dispatch, () => state);
-    fetchDataDepartment(dispatch, () => state);
-  }, [dispatch, state]);
+    if(!dataTopic){
+      fetchDataTopic(dispatch, () => state);
+    }
+    if(!dataDepartment){
+      fetchDataDepartment(dispatch, () => state);
+    }
+  }, [dispatch, state,dataTopic,dataDepartment]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -50,7 +54,7 @@ const DataDisplay = () => {
             </div>
           </div>
           <div className="container">
-            {roots.map(item => (
+            {roots?.map(item => (
               <Link to={`/search?refinementList[hasTopic][0]=${encodeURIComponent(item['pair:label'])}`} className="card" key={item.id}>
                 <div className="body3">{item['pair:label']}</div>
               </Link>

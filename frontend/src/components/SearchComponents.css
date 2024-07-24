@@ -2,46 +2,48 @@
     width: 70%;
   }
 
-  .searchBox input  {
+  .searchBox input {
     border-radius: 30px;
     padding: 20px;
     padding-left: 50px;
     border: 1px solid #E5E7EB;
     box-shadow: 0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 1.6px 8px rgba(0, 0, 0, 0.08);
-  
+
   }
-  .searchBox button  {
+
+  .searchBox button {
     margin-left: 15px;
   }
 
-  .clearRefinementsButton{
+  .clearRefinementsButton {
     color: #343A33;
-    border-radius: 20px;  
+    border-radius: 20px;
     padding: 10px;
     background-color: #B9FF66;
     padding: 15px;
   }
-  .clearRefinementsButton:not([disabled]):hover{
+
+  .clearRefinementsButton:not([disabled]):hover {
     box-shadow: 0px 5px 0px 0px #191A23;
     background-color: #B9FF66;
   }
-  
-  .clearRefinementsButton:disabled{
+
+  .clearRefinementsButton:disabled {
     background-color: #F3F2F1;
   }
 
-  
+
   .ais-RefinementList-label {
     display: flex;
     align-items: center;
     width: 100%;
     white-space: nowrap;
   }
-  
+
   .ais-RefinementList-checkbox {
     margin-right: 10px;
   }
-  
+
   .ais-RefinementList-labelText {
     flex-grow: 1;
     overflow: hidden;
@@ -54,11 +56,11 @@
     padding-top: 0 !important;
     margin-top: 0 !important;
     margin-left: 0 !important;
-    border : none !important;
+    border: none !important;
     box-shadow: none !important;
     padding: 0 !important;
   }
-  
+
   .ais-RefinementList-count {
     margin-left: 10px;
   }
@@ -68,14 +70,14 @@
     font-weight: inherit !important;
     line-height: inherit !important;
   }
-  
+
   .searchResult {
-    overflow-y:auto !important;
+    overflow-y: auto !important;
     overflow-x: hidden !important;
   }
 
   .ais-InfiniteHits-item {
-    width:100% !important;
+    width: 100% !important;
   }
 
   .hit-categories {
@@ -93,7 +95,7 @@
     flex-basis: 70%;
     display: flex;
     flex-direction: column;
-    height : 100vh;
+    height: 100vh;
     padding-left: 20px;
     width: 70%;
   }
@@ -102,7 +104,7 @@
     display: flex;
     min-height: 100%;
   }
-  
+
 
   @media (max-width: 1280px) {
     .sideFilters {
@@ -120,14 +122,14 @@
   }
 
   .showMoreButton {
-    background-color: #B9FF66!important;
-    border-radius: 20px; 
+    background-color: #B9FF66 !important;
+    border-radius: 20px;
     padding: 10px;
     color: black;
     margin-bottom: 10px;
   }
 
-  .showMoreButton:hover{
+  .showMoreButton:hover {
     background-color: #B9FF66;
     box-shadow: 0px 5px 0px 0px #191A23;
 
@@ -140,11 +142,11 @@
     margin-bottom: 10px;
   }
 
-  .ais-InfiniteHits {
+  /* .ais-InfiniteHits {
     margin-top: 20px !important;
-  }
+  } */
 
-  .ais-InfiniteHits-list{
+  .ais-InfiniteHits-list {
     margin-left: 0;
     margin-top: 0;
   }
@@ -153,14 +155,14 @@
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-}
+  }
 
-  .placeholderText{
+  .placeholderText {
     padding-left: 60px;
     padding-right: 20px;
   }
 
-  .searchBoxWithStyledPlaceholder{
+  .searchBoxWithStyledPlaceholder {
     width: 70%;
   }
 
@@ -175,11 +177,8 @@
   }
 
   .customStats {
-    font-family: Raleway;
-    font-size: 12px;
     font-style: italic;
-    font-weight: 400;
-    line-height: 16px;
+    margin-bottom: 20px;
   }
 
   .searchBoxContainer {
@@ -189,3 +188,26 @@
     margin-bottom: 40px;
   }
 
+  .react-joyride__tooltip p {
+    text-align: left;
+    font-family: Raleway;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+
+  .react-joyride__tooltip h3 {
+    font-family: 'Inter', sans-serif;
+    color: #B9FF66;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .react-joyride__tooltip hr {
+    border-top: 1px solid #828282;
+  }
+  

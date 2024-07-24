@@ -34,8 +34,11 @@ const SearchComponents = () => {
       content: (
         <>
           <h3>Barre de recherche</h3>
+          <hr/>
           <p>Vous pouvez taper un ou plusieurs mots-clés, les résultats de recherche sont mis à jour directement.</p>
-          <p>Pour chercher un terme ou expression stricte, ajoutez des guillemets autour. Ex: "projet alimentaire territorial</p>
+          <hr/>
+          <p>Pour chercher un terme ou expression stricte, ajoutez des guillemets autour. Ex: "projet alimentaire territorial"</p>
+          <hr/>
           <p>Si votre mot-clé comporte une faute d'orthographe ou s'approche d'un autre mot, l'outil le reconnaîtra et remontera les résultats qui s'approchent de votre intention de recherche</p>
         </>
       ),
@@ -52,8 +55,12 @@ const SearchComponents = () => {
       content: (
         <>
           <h3>Filtres</h3>
-          <p>Vous pouvez sélectionner un ou plusieurs filtres, qui sont combinés pour actualiser la liste des résultats</p>
-          <p>Tous les contenus apparaissant dans les résultats de recherche proviennent de centres de ressources ou d'observatoires reconnus et qualifiés par nos soins, pour lesquels une convention de partenariat et de mise à disposition des données a été mise en place.</p>
+          <hr/>
+          <p>Tous les contenus proposés proviennent de plateformes partenaires. Vous pouvez sélectionner un ou plusieurs filtres, qui sont combinés, afin d'affiner votre recherche. Le nombre à côté de chaque filtre indique le nombre de résultats qui correspondent à ce filtre.</p>
+          <hr/>
+          <p>Les "Départements" permettent de filtrer les résultats par rapport à leur emplacement géographique. Les "Thématiques" sont des catégories ou classements issus des plateformes partenaires, d'où leur nombre important. Les "Tags" sont des mots-clés utilisés par les plateformes partenaires pour améliorer la caractérisation et le référencement des contenus.</p>
+          <hr/>
+          <p>Nous vous invitons à tester plusieurs types de filtres et de combinaisons pour mieux comprendre le fonctionnement de l'outil. À tout moment, vous pouvez réinitialiser les filtres en cliquant sur le bouton à côté du titre "Rechercher", en haut de la page.</p>
         </>
       ),
       placement: 'right',
@@ -69,6 +76,10 @@ const SearchComponents = () => {
       content: (
         <>
           <h3>Explorer</h3>
+          <hr/>
+          <p>Cette barre est un menu de navigation. En plus de la présente page "Rechercher", vous pouvez cliquer sur "Explorer", qui permet d'afficher toutes les thématiques et une carte des départements, afin de faciliter la navigation dans les contenus de la plateforme.</p> 
+          <hr/>
+          <p>En bas de cette barre, une icône "Documentation" vous amène à un autre site contenant un mode d'emploi de l'outil, ainsi que des précisions sur le projet, son écosystème et des questions fréquentes.</p>
         </>
       ),
       placement: 'right',
@@ -81,13 +92,21 @@ const SearchComponents = () => {
     },
   ]);
 
-  useEffect(() => {
-    const hasSeenJoyride = localStorage.getItem('hasSeenJoyride');
-    if (!hasSeenJoyride) {
-      setRun(true);
-      setStepIndex(0);
-    }
-  }, []);
+  const [tooltipContent, setTooltipContent] = useState("");
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+
+  const handleDidacticielMouseEnter = (evt) => {
+    setTooltipContent("Didacticiel");
+    setTooltipPosition({ x: evt.clientX, y: evt.clientY });
+  };
+
+  const handleMouseMove = (evt) => {
+    setTooltipPosition({ x: evt.clientX+10, y: evt.clientY + 80 });
+  };
+
+  const handleDidacticielMouseLeave = () => {
+    setTooltipContent("");
+  };
 
   const handleDidacticielClick = () => {
     setRun(false);
@@ -159,6 +178,18 @@ const SearchComponents = () => {
   };
 
 
+  useEffect(() => {
+    const hasSeenJoyride = localStorage.getItem('hasSeenJoyride');
+    if (!hasSeenJoyride) {
+      setRun(true);
+      setStepIndex(0);
+    }
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   return (
     <>
       <InstantSearch indexName="documents" searchClient={searchClient} routing={routing}>
@@ -223,17 +254,31 @@ const SearchComponents = () => {
               >
                 <SearchBox className="searchBox" />
               </InputWithStyledPlaceholder>
-              <DidacticielIcon className="didacticiel-icon" onClick={handleDidacticielClick} />
+              <DidacticielIcon className="didacticiel-icon" onClick={handleDidacticielClick} onMouseEnter={handleDidacticielMouseEnter} onMouseLeave={handleDidacticielMouseLeave} />
+              {tooltipContent && (
+                <div
+                  style={{
+                    position: 'fixed',
+                    top: tooltipPosition.y - 50,
+                    left: tooltipPosition.x - 50,
+                    backgroundColor: 'white',
+                    padding: '5px',
+                    border: '1px solid black',
+                    borderRadius: '3px',
+                    pointerEvents: 'none',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  {tooltipContent}
+                </div>
+              )}
             </div>
-            <div>
-              <Stats
+            <div className="customStats body3">
+              <Stats 
                 translations={{
                   rootElementText({ nbHits, processingTimeMS, nbSortedHits, areHitsSorted }) {
                     return `${nbHits.toLocaleString()} resultats trouvés en ${processingTimeMS.toLocaleString()}ms`;
                   }
-                }}
-                classNames={{
-                  root: 'customStats'
                 }}
               />
             </div>
@@ -269,25 +314,30 @@ const SearchComponents = () => {
             zIndex: 10000,
           },
           tooltip: {
-            backgroundColor: 'black',
+            backgroundColor: '#343A33',
             color: 'white',
             border: '1px solid #ddd',
-            borderRadius: '8px',
+            borderRadius: '10px',
             boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
           },
           buttonNext: {
-            backgroundColor: '#28a745',
+            backgroundColor: '#B9FF66',
             borderRadius: '4px',
-            color: 'white',
+            color: 'black',
           },
           buttonBack: {
             marginRight: 10,
-            color: '#28a745',
+            color: '#black',
+            borderRadius: '4px',
+            backgroundColor: '#B9FF66',
           },
           buttonSkip: {
             backgroundColor: '#ddd',
             borderRadius: '4px',
             color: '#333',
+          },
+          tooltipContent: {
+            padding: '0px 0px',
           },
         }}
       />

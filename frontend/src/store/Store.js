@@ -2,8 +2,8 @@ import React, { createContext, useReducer, useContext } from 'react';
 
 // Initial state
 const initialState = {
-  dataTopic: [],
-  dataDepartment: [],
+  dataTopic: null,
+  dataDepartment: null,
   geoData: null,
   loadingTopic: false,
   loadingDepartment: false,
@@ -23,7 +23,7 @@ const reducer = (state, action) => {
     case 'FETCH_ERROR':
       return { ...state, loadingTopic: false, loadingDepartment: false, loadingGeoData: false, error: action.payload };
     case 'FETCH_START_Topic':
-      console.log('FETCH_START_Topic'); 
+      // console.log('FETCH_START_Topic'); 
       return { ...state, loadingTopic: true };
     case 'FETCH_START_Department':
       return { ...state, loadingDepartment: true };

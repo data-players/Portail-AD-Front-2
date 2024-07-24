@@ -32,7 +32,7 @@ const Hit = ({ hit }) => {
 
 
   // Décoder les entités HTML
-  const decodedHTML = he.decode(hit._highlightResult.description.value);
+  const decodedHTML = hit._highlightResult.description?.value?he.decode(hit._highlightResult.description?.value):'';
   // Nettoyer et sécuriser le HTML
   const cleanHTML = DOMPurify.sanitize(decodedHTML);
 
