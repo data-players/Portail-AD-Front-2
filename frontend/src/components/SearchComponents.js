@@ -72,10 +72,10 @@ const SearchComponents = () => {
       disableBeacon: false,
     },
     {
-      target: '#explore-link',
+      target: '.sidebar',
       content: (
         <>
-          <h3>Explorer</h3>
+          <h3>Barre de navigation</h3>
           <hr/>
           <p>Cette barre est un menu de navigation. En plus de la présente page "Rechercher", vous pouvez cliquer sur "Explorer", qui permet d'afficher toutes les thématiques et une carte des départements, afin de faciliter la navigation dans les contenus de la plateforme.</p> 
           <hr/>

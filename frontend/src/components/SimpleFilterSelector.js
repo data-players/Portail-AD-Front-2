@@ -42,7 +42,7 @@ const DataDisplay = () => {
   return (
     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <div className="title">
-        <h2> Explorer par thématique ou par région</h2>
+        <h2> Explorer par thématique ou par département</h2>
         <hr className="title-underline" />
       </div>
       <div className="content" style={{flexShrink:1}}>
