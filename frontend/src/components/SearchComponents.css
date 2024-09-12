@@ -106,7 +106,7 @@
   }
 
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1024px) {
     .sideFilters {
       width: 100%;
       padding-right: 0;
