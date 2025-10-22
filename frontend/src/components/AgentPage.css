@@ -1,0 +1,235 @@
+.agent-page {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.agent-page-content {
+    max-width: 1000px;
+    width: 100%;
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero Section */
+.agent-hero-section {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.agent-hero-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #667eea;
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+.agent-hero-section h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #764ba2;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.agent-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Disclaimer Section */
+.agent-disclaimer-section {
+    margin-bottom: 3rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.agent-disclaimer-content {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.agent-disclaimer-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.agent-disclaimer-text {
+    flex: 1;
+    color: #333;
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.agent-disclaimer-text p {
+    margin-bottom: 1rem;
+}
+
+.agent-disclaimer-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* CTA Section */
+.agent-cta-section {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
+
+.agent-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem 3rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.agent-cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+}
+
+.agent-cta-button:active {
+    transform: translateY(-1px);
+}
+
+.agent-cta-icon {
+    font-size: 2rem;
+}
+
+.agent-cta-text {
+    font-size: 1.3rem;
+}
+
+.agent-cta-description {
+    margin-top: 1rem;
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Features Grid */
+.agent-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.agent-feature-card {
+    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #667eea30;
+    transition: all 0.3s ease;
+}
+
+.agent-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+}
+
+.agent-feature-card h4 {
+    color: #667eea;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.agent-feature-card p {
+    color: #555;
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Markdown Styling */
+.markdown p {
+    margin: 0.5rem 0;
+}
+
+.markdown a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.markdown a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .agent-page {
+        padding: 1rem;
+    }
+
+    .agent-page-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .agent-hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .agent-hero-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .agent-subtitle {
+        font-size: 1rem;
+    }
+
+    .agent-cta-button {
+        padding: 1.2rem 2rem;
+        font-size: 1.2rem;
+    }
+
+    .agent-cta-text {
+        font-size: 1.1rem;
+    }
+
+    .agent-disclaimer-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .agent-features-grid {
+        grid-template-columns: 1fr;
+    }
+}

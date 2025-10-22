@@ -4,11 +4,13 @@ import { ReactComponent as PortalSvgIcon } from '../assets/logos/common/SVG/logo
 import { ReactComponent as ExploreIcon } from '../assets/logos/common/SVG/explorer.svg';
 import { ReactComponent as SearchIcon } from '../assets/logos/common/SVG/rechercher.svg';
 import { ReactComponent as WikiIcon } from '../assets/logos/common/SVG/documentation.svg';
+import { ReactComponent as AssistanceIcon } from '../assets/logos/common/SVG/assistance.svg';
 import './SideBar.css';
 
 const routes = [
   { path: '/search', label: 'Rechercher', section: 'middle', icon: <SearchIcon />, id: 'search-link' },
   { path: '/explore', label: 'Explorer', section: 'middle', icon: <ExploreIcon />, id: 'explore-link' },
+  { path: '/agent', label: 'Agent IA', section: 'middle', icon: <AssistanceIcon />, id: 'agent-link' },
   { path: 'https://wiki.portail-alimentation-durable.fr', label: 'Documentation', section: 'bottom', icon: <WikiIcon />, id: 'wiki-link', isExternal: true },
 ];
 
