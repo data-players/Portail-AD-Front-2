@@ -192,7 +192,7 @@ const SearchComponents = () => {
 
   return (
     <>
-      <InstantSearch indexName="documents" searchClient={searchClient} routing={routing}>
+      <InstantSearch indexName="PAD" searchClient={searchClient} routing={routing}>
         <Configure attributesToSnippet={['description:130', 'hasKeyword:4']} hybrid={{ semanticRatio: 0.8, embedder: 'default' }} />
         <div className="searchContainer">
           <div className="sideFilters">
