@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://app.portail-alimentation-durable.fr",
   "dependencies": {
-    "@meilisearch/instant-meilisearch": "^0.11.1",
+    "@meilisearch/instant-meilisearch": "^0.31.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
