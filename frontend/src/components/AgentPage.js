@@ -25,7 +25,7 @@ Pour partager vos retours sur ce démonstrateur, vos attentes et/ou idées sur c
 
         <div className="agent-cta-container">
           <a
-            href="https://www.portail-alimentation-durable.fr/acces-agent-ia/ "
+            href="https://www.portail-alimentation-durable.fr/acces-agent-ia/"
             target="_blank"
             rel="noopener noreferrer"
             className="agent-cta-button"
